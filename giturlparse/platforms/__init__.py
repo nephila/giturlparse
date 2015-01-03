@@ -14,7 +14,7 @@ PLATFORMS = (
     ('bitbucket', BitbucketPlatform()),
     ('friendcode', FriendCodePlatform()),
     ('assembla', AssemblaPlatform()),
-    ('gitlab', GitlabPlatform()),
+    ('gitlab', GitLabPlatform()),
 
     # Match url
     ('base', BasePlatform()),
