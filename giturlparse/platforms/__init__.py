@@ -8,7 +8,7 @@ from .gitlab import GitLabPlatform
 
 
 # Supported platforms
-PLATFORMS = (
+PLATFORMS = [
     # name -> Platform object
     ('github', GitHubPlatform()),
     ('bitbucket', BitbucketPlatform()),
@@ -18,6 +18,4 @@ PLATFORMS = (
 
     # Match url
     ('base', BasePlatform()),
-)
-
-PLATFORMS_MAP = dict(PLATFORMS)
+]

@@ -1,5 +1,5 @@
 # Imports
-from .platforms import PLATFORMS, PLATFORMS_MAP
+from .platforms import PLATFORMS
 
 
 # Possible values to extract from a Git Url
@@ -17,6 +17,12 @@ class GitUrlParsed(object):
         for k, v in parsed_info.items():
             setattr(self, k, v)
 
+        for name, platform in PLATFORMS:
+            if name == self.platform:
+                self._platform_obj = platform
+
+                break
+
     def _valid_attrs(self):
         return all([
             getattr(self, attr, None)
@@ -28,10 +34,6 @@ class GitUrlParsed(object):
         return all([
             self._valid_attrs(),
         ])
-
-    @property
-    def _platform_obj(self):
-        return PLATFORMS_MAP[self.platform]
 
     ##
     # Alias properties
