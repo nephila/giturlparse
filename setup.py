@@ -7,7 +7,7 @@ except ImportError:
     from distutils.core import setup, Extension
     has_setuptools = False
 
-version_string = '0.0.6'
+version_string = '0.1.0'
 
 
 setup_kwargs = {}
@@ -21,7 +21,7 @@ install_requires = [
 dependency_links = [
 ]
 
-setup(name='giturlparse.py',
+setup(name='giturlparse',
     description='A Git URL parsing module (supports parsing and rewriting)',
     keywords='git url parse ssh github bitbucket',
     version=version_string,
