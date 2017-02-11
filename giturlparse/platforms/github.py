@@ -4,9 +4,9 @@ from .base import BasePlatform
 
 class GitHubPlatform(BasePlatform):
     PATTERNS = {
-        'https': r'https://(?P<domain>.+)/(?P<owner>.+)/(?P<repo>.+).git',
-        'ssh': r'git@(?P<domain>.+):(?P<owner>.+)/(?P<repo>.+).git',
-        'git': r'git://(?P<domain>.+)/(?P<owner>.+)/(?P<repo>.+).git',
+        'https': r'https://(?P<domain>.+)/(?P<owner>.+)/(?P<repo>.+)(?:\.git)?',
+        'ssh': r'git@(?P<domain>.+):(?P<owner>.+)/(?P<repo>.+)(?:\.git)?',
+        'git': r'git://(?P<domain>.+)/(?P<owner>.+)/(?P<repo>.+)(?:\.git)?',
     }
     FORMATS = {
         'https': r'https://%(domain)s/%(owner)s/%(repo)s.git',
