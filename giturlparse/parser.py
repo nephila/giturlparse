@@ -1,4 +1,6 @@
-# Imports
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, print_function, unicode_literals
+
 from collections import defaultdict
 
 from .platforms import PLATFORMS
@@ -31,25 +33,25 @@ def parse(url, check_domain=True):
 
             # Skip if not matched
             if not match:
-                #print("[%s] URL: %s dit not match %s" % (name, url, regex.pattern))
+                # print("[%s] URL: %s dit not match %s" % (name, url, regex.pattern))
                 continue
 
             # Skip if domain is bad
             domain = match.group('domain')
-            #print('[%s] DOMAIN = %s' % (url, domain,))
+            # print('[%s] DOMAIN = %s' % (url, domain,))
             if check_domain:
-                if platform.DOMAINS and not(domain in platform.DOMAINS):
-                    #print("domain: %s not in %s" % (domain, platform.DOMAINS))
+                if platform.DOMAINS and not (domain in platform.DOMAINS):
+                    # print("domain: %s not in %s" % (domain, platform.DOMAINS))
                     continue
-
-            # Get matches as dictionary
-            matches = match.groupdict()
-
-            # Update info with matches
-            parsed_info.update(matches)
 
             # add in platform defaults
             parsed_info.update(platform.DEFAULTS)
+
+            # Get matches as dictionary
+            matches = match.groupdict(default='')
+
+            # Update info with matches
+            parsed_info.update(matches)
 
             # Update info with platform info
             parsed_info.update({

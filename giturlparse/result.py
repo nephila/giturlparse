@@ -1,6 +1,7 @@
-# Imports
-from .platforms import PLATFORMS
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, print_function, unicode_literals
 
+from .platforms import PLATFORMS
 
 # Possible values to extract from a Git Url
 REQUIRED_ATTRIBUTES = (
@@ -10,6 +11,8 @@ REQUIRED_ATTRIBUTES = (
 
 
 class GitUrlParsed(object):
+    platform = None
+
     def __init__(self, parsed_info):
         self._parsed = parsed_info
 
@@ -24,10 +27,9 @@ class GitUrlParsed(object):
                 break
 
     def _valid_attrs(self):
-        return all([
-            getattr(self, attr, None)
-            for attr in REQUIRED_ATTRIBUTES
-        ])
+        return all(
+            [getattr(self, attr, None) for attr in REQUIRED_ATTRIBUTES]
+        )
 
     @property
     def valid(self):
