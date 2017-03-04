@@ -1,6 +1,7 @@
-# Imports
-from .platforms import PLATFORMS
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, print_function, unicode_literals
 
+from .platforms import PLATFORMS
 
 # Possible values to extract from a Git Url
 REQUIRED_ATTRIBUTES = (
