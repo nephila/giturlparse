@@ -1,38 +1,43 @@
-#!/usr/bin/python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import giturlparse
 
 try:
-    from setuptools import setup, Extension
-    has_setuptools = True
+    from setuptools import setup
 except ImportError:
-    from distutils.core import setup, Extension
-    has_setuptools = False
+    from distutils.core import setup
 
-version_string = '0.1.0'
+version = giturlparse.__version__
 
 
-setup_kwargs = {}
+readme = open('README.rst').read()
 
-# Requirements
-install_requires = [
-    # PyPi
 
-    # Non PyPi
-]
-dependency_links = [
-]
-
-setup(name='giturlparse',
+setup(
+    name='giturlparse',
+    version=version,
     description='A Git URL parsing module (supports parsing and rewriting)',
-    keywords='git url parse ssh github bitbucket',
-    version=version_string,
-    url='https://github.com/FriendCode/giturlparse.py',
+    long_description=readme,
     license='Apache v2',
     author="Aaron O'Mullan",
     author_email='aaron@friendco.de',
-    long_description="""
-    """,
+    url='https://github.com/yakky/giturlparse',
+    maintainer='Iacopo Spalletti',
+    maintainer_email='i.spalletti@nephila.it',
     packages=['giturlparse', 'giturlparse.platforms'],
-    install_requires=install_requires,
-    dependency_links=dependency_links,
-    **setup_kwargs
+    include_package_data=True,
+    install_requires=[
+    ],
+    keywords='git url parse ssh github bitbucket',
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: BSD License',
+        'Natural Language :: English',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+    ],
 )

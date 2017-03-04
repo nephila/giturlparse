@@ -1,4 +1,7 @@
-# Imports
+__author__ = 'Iacopo Spalletti'
+__email__ = 'i.spalletti@nephila.it'
+__version__ = '0.9.dev1'
+
 from giturlparse.parser import parse as _parse
 from giturlparse.result import GitUrlParsed
 
