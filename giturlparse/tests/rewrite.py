@@ -43,13 +43,13 @@ REWRITE_URLS = (
      'https://friendco.de/Aaron@user/test-repo.git'),
 
     # Gitlab SSH
-    ('git@host.org:Org/Repo.git', 'ssh', 'ssh://git@host.org:Org/Repo.git'),
-    ('git@host.org:9999/Org/Repo.git', 'ssh', 'ssh://git@host.org:9999/Org/Repo.git'),
+    ('git@host.org:Org/Repo.git', 'ssh', 'git@host.org:Org/Repo.git'),
+    ('git@host.org:9999/Org/Repo.git', 'ssh', 'git@host.org:9999/Org/Repo.git'),
     ('git@host.org:Org/Repo.git', 'https', 'https://host.org/Org/Repo.git'),
     ('git@host.org:9999/Org/Repo.git', 'https', 'https://host.org/Org/Repo.git'),
 
     # Gitlab HTTPS
-    ('https://host.org/Org/Repo.git', 'ssh', 'ssh://git@host.org:Org/Repo.git'),
+    ('https://host.org/Org/Repo.git', 'ssh', 'git@host.org:Org/Repo.git'),
     ('https://host.org/Org/Repo.git', 'https', 'https://host.org/Org/Repo.git'),
 )
 
@@ -63,10 +63,10 @@ INVALID_PARSE_URLS = (
 
 # Here's our "unit tests".
 class UrlRewriteTestCase(unittest.TestCase):
-    def _test_rewrite(self, source, protocol, dest):
+    def _test_rewrite(self, source, protocol, expected):
         parsed = parse(source)
         self.assertTrue(parsed.valid, "Invalid Url: %s" % source)
-        return self.assertEqual(parse(source).format(protocol), dest)
+        return self.assertEqual(parse(source).format(protocol), expected)
 
     def testRewrites(self):
         for data in REWRITE_URLS:

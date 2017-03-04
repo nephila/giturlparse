@@ -11,6 +11,8 @@ REQUIRED_ATTRIBUTES = (
 
 
 class GitUrlParsed(object):
+    platform = None
+
     def __init__(self, parsed_info):
         self._parsed = parsed_info
 

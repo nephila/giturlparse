@@ -44,14 +44,14 @@ def parse(url, check_domain=True):
                     # print("domain: %s not in %s" % (domain, platform.DOMAINS))
                     continue
 
+            # add in platform defaults
+            parsed_info.update(platform.DEFAULTS)
+
             # Get matches as dictionary
-            matches = match.groupdict()
+            matches = match.groupdict(default='')
 
             # Update info with matches
             parsed_info.update(matches)
-
-            # add in platform defaults
-            parsed_info.update(platform.DEFAULTS)
 
             # Update info with platform info
             parsed_info.update({
