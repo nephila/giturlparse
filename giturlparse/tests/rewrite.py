@@ -39,7 +39,8 @@ REWRITE_URLS = (
     ('git@git.assembla.com:SomeRepoID.git', 'git', 'git://git.assembla.com/SomeRepoID.git'),
 
     # FriendCode HTTPS
-    ('https://friendco.de/Aaron@user/test-repo.git', 'https', 'https://friendco.de/Aaron@user/test-repo.git'),
+    ('https://friendco.de/Aaron@user/test-repo.git', 'https',
+     'https://friendco.de/Aaron@user/test-repo.git'),
 
     # Gitlab SSH
     ('git@host.org:Org/Repo.git', 'ssh', 'ssh://git@host.org:Org/Repo.git'),
@@ -59,18 +60,18 @@ INVALID_PARSE_URLS = (
     ('GIT No Repo', 'git://github.com/Org'),
 )
 
+
 # Here's our "unit tests".
 class UrlRewriteTestCase(unittest.TestCase):
-
     def _test_rewrite(self, source, protocol, dest):
         parsed = parse(source)
         self.assertTrue(parsed.valid, "Invalid Url: %s" % source)
         return self.assertEqual(parse(source).format(protocol), dest)
 
-
     def testRewrites(self):
         for data in REWRITE_URLS:
             self._test_rewrite(*data)
+
 
 # Test Suite
 suite = unittest.TestLoader().loadTestsFromTestCase(UrlRewriteTestCase)

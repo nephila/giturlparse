@@ -33,15 +33,15 @@ def parse(url, check_domain=True):
 
             # Skip if not matched
             if not match:
-                #print("[%s] URL: %s dit not match %s" % (name, url, regex.pattern))
+                # print("[%s] URL: %s dit not match %s" % (name, url, regex.pattern))
                 continue
 
             # Skip if domain is bad
             domain = match.group('domain')
-            #print('[%s] DOMAIN = %s' % (url, domain,))
+            # print('[%s] DOMAIN = %s' % (url, domain,))
             if check_domain:
-                if platform.DOMAINS and not(domain in platform.DOMAINS):
-                    #print("domain: %s not in %s" % (domain, platform.DOMAINS))
+                if platform.DOMAINS and not (domain in platform.DOMAINS):
+                    # print("domain: %s not in %s" % (domain, platform.DOMAINS))
                     continue
 
             # Get matches as dictionary

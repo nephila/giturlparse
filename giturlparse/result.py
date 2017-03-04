@@ -25,10 +25,9 @@ class GitUrlParsed(object):
                 break
 
     def _valid_attrs(self):
-        return all([
-            getattr(self, attr, None)
-            for attr in REQUIRED_ATTRIBUTES
-        ])
+        return all(
+            [getattr(self, attr, None) for attr in REQUIRED_ATTRIBUTES]
+        )
 
     @property
     def valid(self):

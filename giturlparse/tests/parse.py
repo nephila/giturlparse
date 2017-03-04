@@ -99,15 +99,19 @@ INVALID_PARSE_URLS = (
     ('GIT No Repo', 'git://github.com/Org'),
 )
 
+
 # Here's our "unit tests".
 class UrlParseTestCase(unittest.TestCase):
-
     def _test_valid(self, url, results):
         p = parse(url)
         self.failUnless(p.valid, "%s is not a valid URL" % url)
-        for k,v in results.items():
+        for k, v in results.items():
             attr_v = getattr(p, k)
-            self.assertEqual(attr_v, v, "[%s] Property '%s' should be '%s' but is '%s'" % (url, k, attr_v, v))
+            self.assertEqual(
+                attr_v, v, "[%s] Property '%s' should be '%s' but is '%s'" % (
+                    url, k, attr_v, v
+                )
+            )
 
     def testValidUrls(self):
         for test_type, data in VALID_PARSE_URLS:
@@ -120,6 +124,7 @@ class UrlParseTestCase(unittest.TestCase):
     def testInvalidUrls(self):
         for problem, url in INVALID_PARSE_URLS:
             self._test_invalid(url)
+
 
 # Test Suite
 suite = unittest.TestLoader().loadTestsFromTestCase(UrlParseTestCase)

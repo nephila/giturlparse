@@ -9,9 +9,9 @@ __email__ = 'i.spalletti@nephila.it'
 __version__ = '0.9.dev1'
 
 
-
 def parse(url, check_domain=True):
     return GitUrlParsed(_parse(url, check_domain))
+
 
 def validate(url, check_domain=True):
     return parse(url, check_domain).valid
