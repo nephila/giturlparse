@@ -14,7 +14,7 @@ Installing
 
 ::
 
-    pip install giturlparse.py
+    pip install giturlparse
 
 ********
 Examples
