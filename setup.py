@@ -21,13 +21,12 @@ setup(
     license='Apache v2',
     author="Aaron O'Mullan",
     author_email='aaron@friendco.de',
-    url='https://github.com/yakky/giturlparse',
+    url='https://github.com/nephila/giturlparse',
     maintainer='Iacopo Spalletti',
     maintainer_email='i.spalletti@nephila.it',
     packages=['giturlparse', 'giturlparse.platforms'],
     include_package_data=True,
-    install_requires=[
-    ],
+    install_requires=[],
     keywords='git url parse ssh github bitbucket',
     test_suite='giturlparse.tests',
     classifiers=[
@@ -40,5 +39,6 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
 )
