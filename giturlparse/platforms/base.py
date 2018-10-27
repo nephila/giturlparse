@@ -13,10 +13,10 @@ class BasePlatform(object):
     }
 
     PATTERNS = {
-        'ssh': r"(?P<_user>.+)s@(?P<domain>.+)s:(?P<repo>.+)s.git",
-        'http': r"http://(?P<domain>.+)s/(?P<repo>.+)s.git",
-        'https': r"https://(?P<domain>.+)s/(?P<repo>.+)s.git",
-        'git': r"git://(?P<domain>.+)s/(?P<repo>.+)s.git"
+        'ssh': r"(?P<_user>.+)@(?P<domain>.+):(?P<repo>.+).git",
+        'http': r"http://(?P<domain>.+)/(?P<repo>.+).git",
+        'https': r"https://(?P<domain>.+)/(?P<repo>.+).git",
+        'git': r"git://(?P<domain>.+)/(?P<repo>.+).git"
     }
 
     # None means it matches all domains
