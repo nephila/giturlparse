@@ -93,7 +93,7 @@ VALID_PARSE_URLS = (
 )
 
 INVALID_PARSE_URLS = (
-    ('SSH Bad Username', 'gitx@github.com:Org/Repo.git'),
+    ('SSH No Username', '@github.com:Org/Repo.git'),
     ('SSH No Repo', 'git@github.com:Org'),
     ('HTTPS No Repo', 'https://github.com/Org'),
     ('GIT No Repo', 'git://github.com/Org'),
@@ -119,6 +119,7 @@ class UrlParseTestCase(unittest.TestCase):
 
     def _test_invalid(self, url):
         p = parse(url)
+        print(p)
         self.failIf(p.valid)
 
     def testInvalidUrls(self):
