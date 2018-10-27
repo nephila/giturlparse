@@ -30,6 +30,15 @@ VALID_PARSE_URLS = (
         'bitbucket': False,
         'assembla': False
     })),
+    ('HTTPS', ('https://github.com/foo-bar/xpwn', {
+        'host': 'github.com',
+        'user': 'git',
+        'owner': 'foo-bar',
+        'repo': 'xpwn',
+
+        'protocol': 'https',
+        'github': True,
+    })),
     ('GIT', ('git://github.com/Org/Repo.git', {
         'host': 'github.com',
         'user': 'git',
@@ -38,8 +47,15 @@ VALID_PARSE_URLS = (
 
         'protocol': 'git',
         'github': True,
-        'bitbucket': False,
-        'assembla': False
+    })),
+    ('GIT', ('git://github.com/foo-bar/xpwn', {
+        'host': 'github.com',
+        'user': 'git',
+        'owner': 'foo-bar',
+        'repo': 'xpwn',
+
+        'protocol': 'git',
+        'github': True,
     })),
 
     # BitBucket
@@ -58,6 +74,15 @@ VALID_PARSE_URLS = (
         'host': 'host.org',
         'user': 'git',
         'owner': 'Org',
+        'repo': 'Repo',
+
+        'protocol': 'ssh',
+        'platform': 'gitlab'
+    })),
+    ('SSH', ('git@host.org:9999/Org-hyphen/Repo.git', {
+        'host': 'host.org',
+        'user': 'git',
+        'owner': 'Org-hyphen',
         'repo': 'Repo',
 
         'protocol': 'ssh',
@@ -119,7 +144,6 @@ class UrlParseTestCase(unittest.TestCase):
 
     def _test_invalid(self, url):
         p = parse(url)
-        print(p)
         self.failIf(p.valid)
 
     def testInvalidUrls(self):
