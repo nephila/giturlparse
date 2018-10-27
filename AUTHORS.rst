@@ -18,6 +18,7 @@ Contributors
 * Alex Koshelev
 * Craig Tracey
 * Daniel Lenski
+* Dennis Schwertel
 * John Vandenberg
 * nooperpudd
 * Tony Osibov

@@ -66,9 +66,9 @@ Alternative URLs for same repo::
     # }
 
 
-**********
-Validate::
-**********
+********
+Validate
+********
 
 ::
 
