@@ -115,6 +115,15 @@ VALID_PARSE_URLS = (
         'protocol': 'https',
         'platform': 'gitlab'
     })),
+    ('HTTPS', ('https://gitlab.com/nephila/giturlparse/blob/master/giturlparse/github.py', {
+        'host': 'gitlab.com',
+        'user': 'git',
+        'owner': 'nephila/giturlparse/blob/master/giturlparse',
+        'repo': 'github.py',
+
+        'protocol': 'https',
+        'platform': 'gitlab'
+    })),
 )
 
 INVALID_PARSE_URLS = (
@@ -122,6 +131,7 @@ INVALID_PARSE_URLS = (
     ('SSH No Repo', 'git@github.com:Org'),
     ('HTTPS No Repo', 'https://github.com/Org'),
     ('GIT No Repo', 'git://github.com/Org'),
+    ('HTTPS', 'https://github.com/nephila/giturlparse/blob/master/giturlparse/platforms/github.py')
 )
 
 
@@ -129,7 +139,7 @@ INVALID_PARSE_URLS = (
 class UrlParseTestCase(unittest.TestCase):
     def _test_valid(self, url, expected):
         p = parse(url)
-        self.failUnless(p.valid, "%s is not a valid URL" % url)
+        self.assertTrue(p.valid, "%s is not a valid URL" % url)
         for k, v in expected.items():
             attr_v = getattr(p, k)
             self.assertEqual(
@@ -144,7 +154,7 @@ class UrlParseTestCase(unittest.TestCase):
 
     def _test_invalid(self, url):
         p = parse(url)
-        self.failIf(p.valid)
+        self.assertFalse(p.valid)
 
     def testInvalidUrls(self):
         for problem, url in INVALID_PARSE_URLS:

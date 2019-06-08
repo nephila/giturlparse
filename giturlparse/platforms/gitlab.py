@@ -6,11 +6,11 @@ from .base import BasePlatform
 
 class GitLabPlatform(BasePlatform):
     PATTERNS = {
-        'https': r'https://(?P<domain>.+)(?P<port>:[0-9]+)?/(?P<owner>.+)/'
+        'https': r'https://(?P<domain>.+?)(?P<port>:[0-9]+)?/(?P<owner>.+)/'
                  r'(?P<repo>.+?)(?:\.git)?$',
-        'ssh': r'(ssh://)?git@(?P<domain>.+):(?P<port>[0-9]+/)?(?P<owner>.+)/'
+        'ssh': r'(ssh://)?git@(?P<domain>.+?):(?P<port>[0-9]+/)?(?P<owner>.+)/'
                r'(?P<repo>.+?)(?:\.git)?$',
-        'git': r'git://(?P<domain>.+):(?P<port>[0-9]+)?/(?P<owner>.+)/'
+        'git': r'git://(?P<domain>.+?):(?P<port>[0-9]+)?/(?P<owner>.+)/'
                r'(?P<repo>.+?)(?:\.git)?$',
     }
     FORMATS = {
@@ -18,6 +18,7 @@ class GitLabPlatform(BasePlatform):
         'ssh': r'git@%(domain)s:%(port)s%(owner)s/%(repo)s.git',
         'git': r'git://%(domain)s%(port)s/%(owner)s/%(repo)s.git'
     }
+    SKIP_DOMAINS = ('github.com', 'gist.github.com',)
     DEFAULTS = {
         '_user': 'git',
         'port': ''

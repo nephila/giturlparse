@@ -11,7 +11,6 @@ SUPPORTED_ATTRIBUTES = (
     'owner',
     '_user',
     'port',
-
     'url',
     'platform',
     'protocol',
@@ -41,7 +40,8 @@ def parse(url, check_domain=True):
             # print('[%s] DOMAIN = %s' % (url, domain,))
             if check_domain:
                 if platform.DOMAINS and not (domain in platform.DOMAINS):
-                    # print("domain: %s not in %s" % (domain, platform.DOMAINS))
+                    continue
+                if platform.SKIP_DOMAINS and domain in platform.SKIP_DOMAINS:
                     continue
 
             # add in platform defaults
