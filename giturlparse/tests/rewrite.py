@@ -21,6 +21,8 @@ REWRITE_URLS = (
     ('git://github.com/Org/Repo.git', 'ssh', 'git@github.com:Org/Repo.git'),
     ('git://github.com/Org/Repo.git', 'https', 'https://github.com/Org/Repo.git'),
     ('git://github.com/Org/Repo.git', 'git', 'git://github.com/Org/Repo.git'),
+    ('git://github.com/Org/Repo/blob/master/dir/subdir/path',
+     'git', 'git://github.com/Org/Repo.git/blob/master/dir/subdir/path'),
 
     # BitBucket SSH
     ('git@bitbucket.org:Org/Repo.git', 'ssh', 'git@bitbucket.org:Org/Repo.git'),
@@ -51,6 +53,9 @@ REWRITE_URLS = (
     # Gitlab HTTPS
     ('https://host.org/Org/Repo.git', 'ssh', 'git@host.org:Org/Repo.git'),
     ('https://host.org/Org/Repo.git', 'https', 'https://host.org/Org/Repo.git'),
+    ('https://host.org/Org/Group/Repo.git', 'ssh', 'git@host.org:Org/Group/Repo.git'),
+    ('https://host.org/Org/Group/Repo/blob/master/file.py', 'ssh',
+     'git@host.org:Org/Group/Repo.git/blob/master/file.py'),
 )
 
 INVALID_PARSE_URLS = (

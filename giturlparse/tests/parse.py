@@ -13,6 +13,8 @@ VALID_PARSE_URLS = (
         'user': 'git',
         'owner': 'Org',
         'repo': 'Repo',
+        'groups': [],
+        'path': '',
 
         'protocol': 'ssh',
         'github': True,
@@ -24,6 +26,8 @@ VALID_PARSE_URLS = (
         'user': 'git',
         'owner': 'Org',
         'repo': 'Repo',
+        'groups': [],
+        'path': '',
 
         'protocol': 'https',
         'github': True,
@@ -35,6 +39,8 @@ VALID_PARSE_URLS = (
         'user': 'git',
         'owner': 'foo-bar',
         'repo': 'xpwn',
+        'groups': [],
+        'path': '',
 
         'protocol': 'https',
         'github': True,
@@ -44,6 +50,8 @@ VALID_PARSE_URLS = (
         'user': 'git',
         'owner': 'Org',
         'repo': 'Repo',
+        'groups': [],
+        'path': '',
 
         'protocol': 'git',
         'github': True,
@@ -53,6 +61,8 @@ VALID_PARSE_URLS = (
         'user': 'git',
         'owner': 'foo-bar',
         'repo': 'xpwn',
+        'groups': [],
+        'path': '',
 
         'protocol': 'git',
         'github': True,
@@ -64,6 +74,8 @@ VALID_PARSE_URLS = (
         'user': 'git',
         'owner': 'Org',
         'repo': 'Repo',
+        'groups': [],
+        'path': '',
 
         'protocol': 'ssh',
         'platform': 'bitbucket'
@@ -75,6 +87,8 @@ VALID_PARSE_URLS = (
         'user': 'git',
         'owner': 'Org',
         'repo': 'Repo',
+        'groups': [],
+        'path': '',
 
         'protocol': 'ssh',
         'platform': 'gitlab'
@@ -84,6 +98,8 @@ VALID_PARSE_URLS = (
         'user': 'git',
         'owner': 'Org-hyphen',
         'repo': 'Repo',
+        'groups': [],
+        'path': '',
 
         'protocol': 'ssh',
         'platform': 'gitlab'
@@ -93,6 +109,8 @@ VALID_PARSE_URLS = (
         'user': 'git',
         'owner': 'Org',
         'repo': 'Repo',
+        'groups': [],
+        'path': '',
 
         'protocol': 'ssh',
         'platform': 'gitlab'
@@ -102,6 +120,8 @@ VALID_PARSE_URLS = (
         'user': 'git',
         'owner': 'Org',
         'repo': 'Repo',
+        'groups': [],
+        'path': '',
 
         'protocol': 'ssh',
         'platform': 'gitlab'
@@ -111,17 +131,67 @@ VALID_PARSE_URLS = (
         'user': 'git',
         'owner': 'Org',
         'repo': 'Repo',
+        'groups': [],
+        'path': '',
 
         'protocol': 'https',
         'platform': 'gitlab'
     })),
+    ('HTTPS', ('https://github.com/nephila/giturlparse/blob/master/giturlparse/github.py', {
+        'host': 'github.com',
+        'user': 'git',
+        'owner': 'nephila',
+        'repo': 'giturlparse',
+        'groups': [],
+        'path': 'master/giturlparse/github.py',
+
+        'protocol': 'https',
+        'platform': 'github'
+    })),
     ('HTTPS', ('https://gitlab.com/nephila/giturlparse/blob/master/giturlparse/github.py', {
         'host': 'gitlab.com',
         'user': 'git',
-        'owner': 'nephila/giturlparse/blob/master/giturlparse',
-        'repo': 'github.py',
+        'owner': 'nephila',
+        'repo': 'giturlparse',
+        'groups': [],
+        'path': 'master/giturlparse/github.py',
 
         'protocol': 'https',
+        'platform': 'gitlab'
+    })),
+    ('HTTPS',
+     ('https://gitlab.com/nephila/group2/third-group/giturlparse/blob/master/'
+      'giturlparse/platforms/github.py', {
+        'host': 'gitlab.com',
+        'user': 'git',
+        'owner': 'nephila',
+        'repo': 'giturlparse',
+        'groups': ['group2', 'third-group'],
+        'path': 'master/giturlparse/platforms/github.py',
+
+        'protocol': 'https',
+        'platform': 'gitlab'}
+      )),
+    ('SSH', ('git@host.org:9999/Org/Group/subGrup/Repo.git/blob/master/giturlparse/github.py', {
+        'host': 'host.org',
+        'user': 'git',
+        'owner': 'Org',
+        'repo': 'Repo',
+        'groups': ['Group', 'subGrup'],
+        'path': 'master/giturlparse/github.py',
+
+        'protocol': 'ssh',
+        'platform': 'gitlab'
+    })),
+    ('GIT', ('git://host.org:9999/Org/Group/subGrup/Repo.git/blob/master/giturlparse/github.py', {
+        'host': 'host.org',
+        'user': 'git',
+        'owner': 'Org',
+        'repo': 'Repo',
+        'groups': ['Group', 'subGrup'],
+        'path': 'master/giturlparse/github.py',
+
+        'protocol': 'git',
         'platform': 'gitlab'
     })),
 )
@@ -131,7 +201,6 @@ INVALID_PARSE_URLS = (
     ('SSH No Repo', 'git@github.com:Org'),
     ('HTTPS No Repo', 'https://github.com/Org'),
     ('GIT No Repo', 'git://github.com/Org'),
-    ('HTTPS', 'https://github.com/nephila/giturlparse/blob/master/giturlparse/platforms/github.py')
 )
 
 

@@ -9,6 +9,8 @@ SUPPORTED_ATTRIBUTES = (
     'domain',
     'repo',
     'owner',
+    'raw_path',
+    'groups_path',
     '_user',
     'port',
     'url',
@@ -21,6 +23,8 @@ def parse(url, check_domain=True):
     # Values are None by default
     parsed_info = defaultdict(lambda: None)
     parsed_info['port'] = ''
+    parsed_info['raw_path'] = ''
+    parsed_info['groups_path'] = ''
 
     # Defaults to all attributes
     map(parsed_info.setdefault, SUPPORTED_ATTRIBUTES)

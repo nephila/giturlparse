@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, print_function, unicode_literals
 
+from copy import copy
+
 from .platforms import PLATFORMS
 
 # Possible values to extract from a Git Url
@@ -51,11 +53,28 @@ class GitUrlParsed(object):
 
         return self.owner
 
+    @property
+    def groups(self):
+        if self.groups_path:
+            return self.groups_path.split('/')
+        else:
+            return []
+
+    @property
+    def path(self):
+        if self.raw_path:
+            return self.raw_path.replace('/blob/', '').strip('/')
+        else:
+            return ''
+
     ##
     # Format URL to protocol
     ##
     def format(self, protocol):
-        return self._platform_obj.FORMATS[protocol] % self._parsed
+        items = copy(self._parsed)
+        items['port_slash'] = '%s/' % self.port if self.port else ''
+        items['groups_slash'] = '%s/' % self.groups_path if self.groups_path else ''
+        return self._platform_obj.FORMATS[protocol] % items
 
     ##
     # Normalize
