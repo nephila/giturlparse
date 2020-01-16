@@ -6,7 +6,7 @@ from .base import BasePlatform
 
 class GitLabPlatform(BasePlatform):
     PATTERNS = {
-        'https': r'https://(?P<domain>.+)(?P<port>:[0-9]+)?/(?P<owner>.+)/'
+        'https': r'https://(?P<domain>.+?)(?P<port>:[0-9]+)?/(?P<owner>.+)/'
                  r'(?P<repo>.+?)(?:\.git)?$',
         'ssh': r'(ssh://)?git@(?P<domain>.+):(?P<port>[0-9]+/)?(?P<owner>.+)/'
                r'(?P<repo>.+?)(?:\.git)?$',
