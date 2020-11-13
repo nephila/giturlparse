@@ -1,16 +1,13 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import, print_function, unicode_literals
-
 from .platforms import PLATFORMS
 
 # Possible values to extract from a Git Url
 REQUIRED_ATTRIBUTES = (
-    'domain',
-    'repo',
+    "domain",
+    "repo",
 )
 
 
-class GitUrlParsed(object):
+class GitUrlParsed:
     platform = None
 
     def __init__(self, parsed_info):
@@ -27,15 +24,15 @@ class GitUrlParsed(object):
                 break
 
     def _valid_attrs(self):
-        return all(
-            [getattr(self, attr, None) for attr in REQUIRED_ATTRIBUTES]
-        )
+        return all([getattr(self, attr, None) for attr in REQUIRED_ATTRIBUTES])  # NOQA
 
     @property
     def valid(self):
-        return all([
-            self._valid_attrs(),
-        ])
+        return all(
+            [
+                self._valid_attrs(),
+            ]
+        )
 
     ##
     # Alias properties
@@ -46,7 +43,7 @@ class GitUrlParsed(object):
 
     @property
     def user(self):
-        if hasattr(self, '_user'):
+        if hasattr(self, "_user"):
             return self._user
 
         return self.owner
@@ -54,7 +51,7 @@ class GitUrlParsed(object):
     ##
     # Format URL to protocol
     ##
-    def format(self, protocol):
+    def format(self, protocol):  # NOQA
         return self._platform_obj.FORMATS[protocol] % self._parsed
 
     ##
@@ -69,50 +66,47 @@ class GitUrlParsed(object):
     ##
     @property
     def url2ssh(self):
-        return self.format('ssh')
+        return self.format("ssh")
 
     @property
     def url2http(self):
-        return self.format('http')
+        return self.format("http")
 
     @property
     def url2https(self):
-        return self.format('https')
+        return self.format("https")
 
     @property
     def url2git(self):
-        return self.format('git')
+        return self.format("git")
 
     # All supported Urls for a repo
     @property
     def urls(self):
-        return dict(
-            (protocol, self.format(protocol))
-            for protocol in self._platform_obj.PROTOCOLS
-        )
+        return {protocol: self.format(protocol) for protocol in self._platform_obj.PROTOCOLS}
 
     ##
     # Platforms
     ##
     @property
     def github(self):
-        return self.platform == 'github'
+        return self.platform == "github"
 
     @property
     def bitbucket(self):
-        return self.platform == 'bitbucket'
+        return self.platform == "bitbucket"
 
     @property
     def friendcode(self):
-        return self.platform == 'friendcode'
+        return self.platform == "friendcode"
 
     @property
     def assembla(self):
-        return self.platform == 'assembla'
+        return self.platform == "assembla"
 
     @property
     def gitlab(self):
-        return self.platform == 'gitlab'
+        return self.platform == "gitlab"
 
     ##
     # Get data as dict

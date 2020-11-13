@@ -1,6 +1,6 @@
 [run]
 branch = True
-source = giturlsparse
+source = giturlparse
 
 [report]
 omit =

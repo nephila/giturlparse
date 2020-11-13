@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import, print_function, unicode_literals
-
 import unittest
 
 from giturlparse import parse
@@ -8,56 +5,46 @@ from giturlparse import parse
 # Test data
 REWRITE_URLS = (
     # GitHub SSH
-    ('git@github.com:Org/Repo.git', 'ssh', 'git@github.com:Org/Repo.git'),
-    ('git@github.com:Org/Repo.git', 'https', 'https://github.com/Org/Repo.git'),
-    ('git@github.com:Org/Repo.git', 'git', 'git://github.com/Org/Repo.git'),
-
+    ("git@github.com:Org/Repo.git", "ssh", "git@github.com:Org/Repo.git"),
+    ("git@github.com:Org/Repo.git", "https", "https://github.com/Org/Repo.git"),
+    ("git@github.com:Org/Repo.git", "git", "git://github.com/Org/Repo.git"),
     # GitHub HTTPS
-    ('https://github.com/Org/Repo.git', 'ssh', 'git@github.com:Org/Repo.git'),
-    ('https://github.com/Org/Repo.git', 'https', 'https://github.com/Org/Repo.git'),
-    ('https://github.com/Org/Repo.git', 'git', 'git://github.com/Org/Repo.git'),
-
+    ("https://github.com/Org/Repo.git", "ssh", "git@github.com:Org/Repo.git"),
+    ("https://github.com/Org/Repo.git", "https", "https://github.com/Org/Repo.git"),
+    ("https://github.com/Org/Repo.git", "git", "git://github.com/Org/Repo.git"),
     # GitHub GIT
-    ('git://github.com/Org/Repo.git', 'ssh', 'git@github.com:Org/Repo.git'),
-    ('git://github.com/Org/Repo.git', 'https', 'https://github.com/Org/Repo.git'),
-    ('git://github.com/Org/Repo.git', 'git', 'git://github.com/Org/Repo.git'),
-
+    ("git://github.com/Org/Repo.git", "ssh", "git@github.com:Org/Repo.git"),
+    ("git://github.com/Org/Repo.git", "https", "https://github.com/Org/Repo.git"),
+    ("git://github.com/Org/Repo.git", "git", "git://github.com/Org/Repo.git"),
     # BitBucket SSH
-    ('git@bitbucket.org:Org/Repo.git', 'ssh', 'git@bitbucket.org:Org/Repo.git'),
-    ('git@bitbucket.org:Org/Repo.git', 'https', 'https://Org@bitbucket.org/Org/Repo.git'),
-
+    ("git@bitbucket.org:Org/Repo.git", "ssh", "git@bitbucket.org:Org/Repo.git"),
+    ("git@bitbucket.org:Org/Repo.git", "https", "https://Org@bitbucket.org/Org/Repo.git"),
     # BitBucket HTTPS
-    ('https://Org@bitbucket.org/Org/Repo.git', 'ssh', 'git@bitbucket.org:Org/Repo.git'),
-    ('https://Org@bitbucket.org/Org/Repo.git', 'https', 'https://Org@bitbucket.org/Org/Repo.git'),
-
+    ("https://Org@bitbucket.org/Org/Repo.git", "ssh", "git@bitbucket.org:Org/Repo.git"),
+    ("https://Org@bitbucket.org/Org/Repo.git", "https", "https://Org@bitbucket.org/Org/Repo.git"),
     # Assembla GIT
-    ('git://git.assembla.com/SomeRepoID.git', 'ssh', 'git@git.assembla.com:SomeRepoID.git'),
-    ('git://git.assembla.com/SomeRepoID.git', 'git', 'git://git.assembla.com/SomeRepoID.git'),
-
+    ("git://git.assembla.com/SomeRepoID.git", "ssh", "git@git.assembla.com:SomeRepoID.git"),
+    ("git://git.assembla.com/SomeRepoID.git", "git", "git://git.assembla.com/SomeRepoID.git"),
     # Assembla SSH
-    ('git@git.assembla.com:SomeRepoID.git', 'ssh', 'git@git.assembla.com:SomeRepoID.git'),
-    ('git@git.assembla.com:SomeRepoID.git', 'git', 'git://git.assembla.com/SomeRepoID.git'),
-
+    ("git@git.assembla.com:SomeRepoID.git", "ssh", "git@git.assembla.com:SomeRepoID.git"),
+    ("git@git.assembla.com:SomeRepoID.git", "git", "git://git.assembla.com/SomeRepoID.git"),
     # FriendCode HTTPS
-    ('https://friendco.de/Aaron@user/test-repo.git', 'https',
-     'https://friendco.de/Aaron@user/test-repo.git'),
-
+    ("https://friendco.de/Aaron@user/test-repo.git", "https", "https://friendco.de/Aaron@user/test-repo.git"),
     # Gitlab SSH
-    ('git@host.org:Org/Repo.git', 'ssh', 'git@host.org:Org/Repo.git'),
-    ('git@host.org:9999/Org/Repo.git', 'ssh', 'git@host.org:9999/Org/Repo.git'),
-    ('git@host.org:Org/Repo.git', 'https', 'https://host.org/Org/Repo.git'),
-    ('git@host.org:9999/Org/Repo.git', 'https', 'https://host.org/Org/Repo.git'),
-
+    ("git@host.org:Org/Repo.git", "ssh", "git@host.org:Org/Repo.git"),
+    ("git@host.org:9999/Org/Repo.git", "ssh", "git@host.org:9999/Org/Repo.git"),
+    ("git@host.org:Org/Repo.git", "https", "https://host.org/Org/Repo.git"),
+    ("git@host.org:9999/Org/Repo.git", "https", "https://host.org/Org/Repo.git"),
     # Gitlab HTTPS
-    ('https://host.org/Org/Repo.git', 'ssh', 'git@host.org:Org/Repo.git'),
-    ('https://host.org/Org/Repo.git', 'https', 'https://host.org/Org/Repo.git'),
+    ("https://host.org/Org/Repo.git", "ssh", "git@host.org:Org/Repo.git"),
+    ("https://host.org/Org/Repo.git", "https", "https://host.org/Org/Repo.git"),
 )
 
 INVALID_PARSE_URLS = (
-    ('SSH Bad Username', 'gitx@github.com:Org/Repo.git'),
-    ('SSH No Repo', 'git@github.com:Org'),
-    ('HTTPS No Repo', 'https://github.com/Org'),
-    ('GIT No Repo', 'git://github.com/Org'),
+    ("SSH Bad Username", "gitx@github.com:Org/Repo.git"),
+    ("SSH No Repo", "git@github.com:Org"),
+    ("HTTPS No Repo", "https://github.com/Org"),
+    ("GIT No Repo", "git://github.com/Org"),
 )
 
 
@@ -68,7 +55,7 @@ class UrlRewriteTestCase(unittest.TestCase):
         self.assertTrue(parsed.valid, "Invalid Url: %s" % source)
         return self.assertEqual(parse(source).format(protocol), expected)
 
-    def testRewrites(self):
+    def test_rewrites(self):
         for data in REWRITE_URLS:
             self._test_rewrite(*data)
 
