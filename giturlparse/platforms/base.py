@@ -28,7 +28,7 @@ class BasePlatform(object):
     def __init__(self):
         # Precompile PATTERNS
         self.COMPILED_PATTERNS = dict(
-            (proto, re.compile(regex))
+            (proto, re.compile(regex, re.IGNORECASE))
             for proto, regex in self.PATTERNS.items()
         )
 
@@ -49,4 +49,5 @@ class BasePlatform(object):
         data["path"] = ""
         data["branch"] = ""
         data["protocols"] = list(filter(lambda x: x, data["protocols"].split("+")))
+        data["pathname"] = data["pathname"].strip(":")
         return data

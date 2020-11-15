@@ -31,6 +31,7 @@ def parse(url, check_domain=True):
 
     for name, platform in PLATFORMS:
         for protocol, regex in platform.COMPILED_PATTERNS.items():
+            # print(name, protocol, regex)
             # Match current regex against URL
             match = regex.match(url)
 

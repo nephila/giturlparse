@@ -97,6 +97,23 @@ VALID_PARSE_URLS = (
         'protocols': ['git'],
         'github': True,
     })),
+    ('SSH', ('ssh://git@github.com/Org/Repo.git', {
+        'host': 'github.com',
+        'resource': 'github.com',
+        'user': 'git',
+        'port': '',
+        'owner': 'Org',
+        'repo': 'Repo',
+        'name': 'Repo',
+        'groups': [],
+        'path': '',
+        'path_raw': '',
+        'pathname': '/Org/Repo.git',
+        'branch': '',
+        'protocol': 'ssh',
+        'protocols': ['ssh'],
+        'github': True,
+    })),
 
     # BitBucket
     ('SSH', ('git@bitbucket.org:Org/Repo.git', {
