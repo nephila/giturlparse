@@ -7,10 +7,10 @@ import re
 
 class BasePlatform(object):
     FORMATS = {
-        'ssh': r"%(_user)s@%(host)s:%(repo)s.git",
-        'http': r"http://%(host)s/%(repo)s.git",
-        'https': r"https://%(host)s/%(repo)s.git",
-        'git': r"git://%(host)s/%(repo)s.git"
+        'ssh': r"(?P<protocols>(git\+)?(?P<protocol>ssh))?(://)?%(_user)s@%(host)s:%(repo)s.git",
+        'http': r"(?P<protocols>(git\+)?(?P<protocol>http))://%(host)s/%(repo)s.git",
+        'https': r"(?P<protocols>(git\+)?(?P<protocol>https))://%(host)s/%(repo)s.git",
+        'git': r"(?P<protocols>(?P<protocol>git))://%(host)s/%(repo)s.git"
     }
 
     PATTERNS = {
@@ -48,4 +48,5 @@ class BasePlatform(object):
     def clean_data(data):
         data["path"] = ""
         data["branch"] = ""
+        data["protocols"] = list(filter(lambda x: x, data["protocols"].split("+")))
         return data

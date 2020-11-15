@@ -23,16 +23,20 @@ Examples
 Exposed attributes
 ==================
 
+* ``platform``: platform codename
 * ``host``: server hostname
+* ``resource``: same as ``host``
+* ``port``: URL port (only if explicitly defined in URL)
+* ``protocol``: URL protocol (git, ssh, http/https)
+* ``protocols``: list of protocols explicitly defined in URL
 * ``user``: repository user
 * ``owner``: repository owner (user or organization)
 * ``repo``: repository name
+* ``name``: same as ``repo``
 * ``groups``: list of groups - gitlab only
 * ``path``: path to file or directory (includes the branch name) - gitlab / github only
-* ``pathname``: raw path starting from the repo name (might include platform keyword) - gitlab / github only
+* ``path_raw``: raw path starting from the repo name (might include platform keyword) - gitlab / github only
 * ``branch``: branch name (when parseable) - gitlab / github only
-* ``protocol``: URL protocol (git, ssh, http/https)
-* ``platform``: platform codename
 
 Parse
 =====

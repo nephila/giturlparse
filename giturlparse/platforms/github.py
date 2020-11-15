@@ -6,17 +6,16 @@ from .base import BasePlatform
 
 class GitHubPlatform(BasePlatform):
     PATTERNS = {
-        'https': r'https://(?P<domain>[^/]+?)/(?P<owner>[^/]+?)/(?P<repo>[^/]+?)(?:\.git)?'
-                 r'(?P<pathname>(/blob/|/tree/).+)?$',
-        'ssh': r'git@(?P<domain>.+?):(?P<owner>[^/]+)/(?P<repo>[^/]+?)(?:\.git)'
-               r'(?P<pathname>(/blob/|/tree/).+)?$',
-        'git': r'git://(?P<domain>.+?)/(?P<owner>[^/]+)/(?P<repo>[^/]+?)(?:\.git)?'
-               r'(?P<pathname>(/blob/|/tree/).+)?$',
+        'https': r'(?P<protocols>(git\+)?(?P<protocol>https))://(?P<domain>[^/]+?)(?P<pathname>/(?P<owner>[^/]+?)/(?P<repo>[^/]+?)(?:\.git)?(?P<path_raw>(/blob/|/tree/).+)?)$',
+        'ssh': r'(?P<protocols>(git\+)?(?P<protocol>ssh))?(://)?git@(?P<domain>.+?):(?P<pathname>(?P<owner>[^/]+)/(?P<repo>[^/]+?)(?:\.git)'
+               r'(?P<path_raw>(/blob/|/tree/).+)?)$',
+        'git': r'(?P<protocols>(?P<protocol>git))://(?P<domain>.+?)(?P<pathname>/(?P<owner>[^/]+)/(?P<repo>[^/]+?)(?:\.git)?'
+               r'(?P<path_raw>(/blob/|/tree/).+)?)$',
     }
     FORMATS = {
-        'https': r'https://%(domain)s/%(owner)s/%(repo)s.git%(pathname)s',
-        'ssh': r'git@%(domain)s:%(owner)s/%(repo)s.git%(pathname)s',
-        'git': r'git://%(domain)s/%(owner)s/%(repo)s.git%(pathname)s'
+        'https': r'https://%(domain)s/%(owner)s/%(repo)s.git%(path_raw)s',
+        'ssh': r'git@%(domain)s:%(owner)s/%(repo)s.git%(path_raw)s',
+        'git': r'git://%(domain)s/%(owner)s/%(repo)s.git%(path_raw)s'
     }
     DOMAINS = ('github.com', 'gist.github.com',)
     DEFAULTS = {
@@ -26,8 +25,8 @@ class GitHubPlatform(BasePlatform):
     @staticmethod
     def clean_data(data):
         data = BasePlatform.clean_data(data)
-        if data["pathname"].startswith("/blob/"):
-            data["path"] = data["pathname"].replace("/blob/", "")
-        if data["pathname"].startswith("/tree/"):
-            data["branch"] = data["pathname"].replace("/tree/", "")
+        if data["path_raw"].startswith("/blob/"):
+            data["path"] = data["path_raw"].replace("/blob/", "")
+        if data["path_raw"].startswith("/tree/"):
+            data["branch"] = data["path_raw"].replace("/tree/", "")
         return data

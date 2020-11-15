@@ -6,8 +6,8 @@ from .base import BasePlatform
 
 class BitbucketPlatform(BasePlatform):
     PATTERNS = {
-        'https': r'https://(?P<_user>.+)@(?P<domain>.+?)/(?P<owner>.+)/(?P<repo>.+?)(?:\.git)?$',
-        'ssh': r'git@(?P<domain>.+?):(?P<owner>.+)/(?P<repo>.+?)(?:\.git)?$'
+        'https': r'(?P<protocols>(git\+)?(?P<protocol>https))://(?P<_user>.+)@(?P<domain>.+?)(?P<pathname>/(?P<owner>.+)/(?P<repo>.+?)(?:\.git)?)$',
+        'ssh': r'(?P<protocols>(git\+)?(?P<protocol>ssh))?(://)?git@(?P<domain>.+?):(?P<pathname>(?P<owner>.+)/(?P<repo>.+?)(?:\.git)?)$'
     }
     FORMATS = {
         'https': r'https://%(owner)s@%(domain)s/%(owner)s/%(repo)s.git',

@@ -46,6 +46,14 @@ class GitUrlParsed(object):
         return self.domain
 
     @property
+    def resource(self):
+        return self.domain
+
+    @property
+    def name(self):
+        return self.repo
+
+    @property
     def user(self):
         if hasattr(self, '_user'):
             return self._user
@@ -58,7 +66,6 @@ class GitUrlParsed(object):
             return self.groups_path.split('/')
         else:
             return []
-
 
     ##
     # Format URL to protocol
