@@ -62,8 +62,8 @@ class GitUrlParsed(object):
 
     @property
     def path(self):
-        if self.raw_path:
-            return self.raw_path.replace('/blob/', '').strip('/')
+        if self.pathname:
+            return self.pathname.replace('/blob/', '').strip('/')
         else:
             return ''
 
