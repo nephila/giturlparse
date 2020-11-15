@@ -25,7 +25,6 @@ class GitUrlParsed(object):
         for name, platform in PLATFORMS:
             if name == self.platform:
                 self._platform_obj = platform
-
                 break
 
     def _valid_attrs(self):
@@ -60,12 +59,6 @@ class GitUrlParsed(object):
         else:
             return []
 
-    @property
-    def path(self):
-        if self.pathname:
-            return self.pathname.replace('/blob/', '').strip('/')
-        else:
-            return ''
 
     ##
     # Format URL to protocol

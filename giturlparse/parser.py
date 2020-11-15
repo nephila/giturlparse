@@ -52,7 +52,7 @@ def parse(url, check_domain=True):
             parsed_info.update(platform.DEFAULTS)
 
             # Get matches as dictionary
-            matches = match.groupdict(default='')
+            matches = platform.clean_data(match.groupdict(default=''))
 
             # Update info with matches
             parsed_info.update(matches)

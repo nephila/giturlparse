@@ -43,3 +43,9 @@ class BasePlatform(object):
             ]
             if sub:
                 self.SKIP_DOMAINS = list(itertools.chain.from_iterable(sub))
+
+    @staticmethod
+    def clean_data(data):
+        data["path"] = ""
+        data["branch"] = ""
+        return data

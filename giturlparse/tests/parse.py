@@ -15,7 +15,8 @@ VALID_PARSE_URLS = (
         'repo': 'Repo',
         'groups': [],
         'path': '',
-
+        'pathname': '',
+        'branch': '',
         'protocol': 'ssh',
         'github': True,
         'bitbucket': False,
@@ -28,7 +29,8 @@ VALID_PARSE_URLS = (
         'repo': 'Repo',
         'groups': [],
         'path': '',
-
+        'pathname': '',
+        'branch': '',
         'protocol': 'https',
         'github': True,
         'bitbucket': False,
@@ -41,7 +43,8 @@ VALID_PARSE_URLS = (
         'repo': 'xpwn',
         'groups': [],
         'path': '',
-
+        'pathname': '',
+        'branch': '',
         'protocol': 'https',
         'github': True,
     })),
@@ -52,7 +55,8 @@ VALID_PARSE_URLS = (
         'repo': 'Repo',
         'groups': [],
         'path': '',
-
+        'pathname': '',
+        'branch': '',
         'protocol': 'git',
         'github': True,
     })),
@@ -63,7 +67,8 @@ VALID_PARSE_URLS = (
         'repo': 'xpwn',
         'groups': [],
         'path': '',
-
+        'pathname': '',
+        'branch': '',
         'protocol': 'git',
         'github': True,
     })),
@@ -76,7 +81,8 @@ VALID_PARSE_URLS = (
         'repo': 'Repo',
         'groups': [],
         'path': '',
-
+        'pathname': '',
+        'branch': '',
         'protocol': 'ssh',
         'platform': 'bitbucket'
     })),
@@ -89,7 +95,8 @@ VALID_PARSE_URLS = (
         'repo': 'Repo',
         'groups': [],
         'path': '',
-
+        'pathname': '',
+        'branch': '',
         'protocol': 'ssh',
         'platform': 'gitlab'
     })),
@@ -100,7 +107,8 @@ VALID_PARSE_URLS = (
         'repo': 'Repo',
         'groups': [],
         'path': '',
-
+        'pathname': '',
+        'branch': '',
         'protocol': 'ssh',
         'platform': 'gitlab'
     })),
@@ -111,7 +119,8 @@ VALID_PARSE_URLS = (
         'repo': 'Repo',
         'groups': [],
         'path': '',
-
+        'pathname': '',
+        'branch': '',
         'protocol': 'ssh',
         'platform': 'gitlab'
     })),
@@ -122,7 +131,8 @@ VALID_PARSE_URLS = (
         'repo': 'Repo',
         'groups': [],
         'path': '',
-
+        'pathname': '',
+        'branch': '',
         'protocol': 'ssh',
         'platform': 'gitlab'
     })),
@@ -133,7 +143,8 @@ VALID_PARSE_URLS = (
         'repo': 'Repo',
         'groups': [],
         'path': '',
-
+        'pathname': '',
+        'branch': '',
         'protocol': 'https',
         'platform': 'gitlab'
     })),
@@ -144,7 +155,20 @@ VALID_PARSE_URLS = (
         'repo': 'giturlparse',
         'groups': [],
         'path': 'master/giturlparse/github.py',
-
+        'pathname': '/blob/master/giturlparse/github.py',
+        'branch': '',
+        'protocol': 'https',
+        'platform': 'github'
+    })),
+    ('HTTPS', ('https://github.com/nephila/giturlparse/tree/feature/py37', {
+        'host': 'github.com',
+        'user': 'git',
+        'owner': 'nephila',
+        'repo': 'giturlparse',
+        'groups': [],
+        'path': '',
+        'pathname': '/tree/feature/py37',
+        'branch': 'feature/py37',
         'protocol': 'https',
         'platform': 'github'
     })),
@@ -155,7 +179,8 @@ VALID_PARSE_URLS = (
         'repo': 'giturlparse',
         'groups': [],
         'path': 'master/giturlparse/github.py',
-
+        'pathname': '/blob/master/giturlparse/github.py',
+        'branch': '',
         'protocol': 'https',
         'platform': 'gitlab'
     })),
@@ -168,29 +193,44 @@ VALID_PARSE_URLS = (
         'repo': 'giturlparse',
         'groups': ['group2', 'third-group'],
         'path': 'master/giturlparse/platforms/github.py',
-
+        'pathname': '/blob/master/giturlparse/platforms/github.py',
+        'branch': '',
         'protocol': 'https',
-        'platform': 'gitlab'}
-      )),
-    ('SSH', ('git@host.org:9999/Org/Group/subGrup/Repo.git/blob/master/giturlparse/github.py', {
+        'platform': 'gitlab'
+      })),
+    ('SSH', ('git@host.org:9999/Org/Group/subGroup/Repo.git/blob/master/giturlparse/github.py', {
         'host': 'host.org',
         'user': 'git',
         'owner': 'Org',
         'repo': 'Repo',
-        'groups': ['Group', 'subGrup'],
+        'groups': ['Group', 'subGroup'],
         'path': 'master/giturlparse/github.py',
-
+        'pathname': '/blob/master/giturlparse/github.py',
+        'branch': '',
         'protocol': 'ssh',
         'platform': 'gitlab'
     })),
-    ('GIT', ('git://host.org:9999/Org/Group/subGrup/Repo.git/blob/master/giturlparse/github.py', {
+    ('GIT', ('git://host.org:9999/Org/Group/subGroup/Repo.git/blob/master/giturlparse/github.py', {
         'host': 'host.org',
         'user': 'git',
         'owner': 'Org',
         'repo': 'Repo',
-        'groups': ['Group', 'subGrup'],
+        'groups': ['Group', 'subGroup'],
         'path': 'master/giturlparse/github.py',
-
+        'pathname': '/blob/master/giturlparse/github.py',
+        'branch': '',
+        'protocol': 'git',
+        'platform': 'gitlab'
+    })),
+    ('GIT', ('git://host.org:9999/Org/Group/subGroup/Repo.git/-/tree/feature/custom-branch', {
+        'host': 'host.org',
+        'user': 'git',
+        'owner': 'Org',
+        'repo': 'Repo',
+        'groups': ['Group', 'subGroup'],
+        'path': '',
+        'pathname': '/-/tree/feature/custom-branch',
+        'branch': 'feature/custom-branch',
         'protocol': 'git',
         'platform': 'gitlab'
     })),

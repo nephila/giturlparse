@@ -20,6 +20,20 @@ Installing
 Examples
 ********
 
+Exposed attributes
+==================
+
+* ``host``: server hostname
+* ``user``: repository user
+* ``owner``: repository owner (user or organization)
+* ``repo``: repository name
+* ``groups``: list of groups - gitlab only
+* ``path``: path to file or directory (includes the branch name) - gitlab / github only
+* ``pathname``: raw path starting from the repo name (might include platform keyword) - gitlab / github only
+* ``branch``: branch name (when parseable) - gitlab / github only
+* ``protocol``: URL protocol (git, ssh, http/https)
+* ``platform``: platform codename
+
 Parse
 =====
 
