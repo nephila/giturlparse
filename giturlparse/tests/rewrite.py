@@ -59,7 +59,6 @@ INVALID_PARSE_URLS = (
 )
 
 
-# Here's our "unit tests".
 class UrlRewriteTestCase(unittest.TestCase):
     def _test_rewrite(self, source, protocol, expected):
         parsed = parse(source)
