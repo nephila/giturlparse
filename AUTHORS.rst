@@ -3,7 +3,7 @@ Credits
 =======
 
 Author
-----------------
+------
 
 * Aaron O'Mullan <aaron.omullan@friendco.de>
 

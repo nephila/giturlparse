@@ -7,9 +7,8 @@ little bit helps, and credit will always be given.
 
 You can contribute in many ways:
 
-**********************
 Types of Contributions
-**********************
+----------------------
 
 Report Bugs
 ===========
@@ -33,15 +32,6 @@ Implement Features
 
 Look through the GitHub issues for features. Anything tagged with "feature"
 is open to whoever wants to implement it.
-
-Branching model
-~~~~~~~~~~~~~~~
-
-When planning a code contributing, these is the project branching model:
-
-* new features goes to develop
-* bugfixes for releases goes to release/Y.Z.x branches
-* master is just a snapshot of the latest stable release and should not be targeted
 
 Write Documentation
 ===================
@@ -77,7 +67,7 @@ Ready to contribute? Here's how to set up `giturlparse` for local development.
 
     $ mkvirtualenv giturlparse
     $ cd giturlparse/
-    $ python setup.py develop
+    $ pip install -e .
 
 4. Create a branch for local development::
 
@@ -100,16 +90,73 @@ To get tox, just pip install them into your virtualenv.
 
 7. Submit a pull request through the GitHub website.
 
-***********************
+Development tips
+----------------
+
+This project allows you to use `pre-commit <https://pre-commit.com/>`_ to ensure an easy compliance
+to the project code styles.
+
+If you want to use it, install it globally (for example with ``pip3 install --user precommit``,
+but check `installation instruction <https://pre-commit.com/#install>`_.
+When first cloning the project ensure you install the git hooks by running ``pre-commit install``.
+
+From now on every commit will be checked against our code style.
+
+Check also the available tox environments with ``tox -l``: the ones not marked with a python version number are tools
+to help you work on the project buy checking / formatting code style, running docs etc.
+
+Testing tips
+------------
+You can test your project using any specific version of python.
+
+For example ``tox -epy3.7`` runs the tests on python 3.7.
+
 Pull Request Guidelines
-***********************
+=======================
 
-Before you submit a pull request, check that it meets these guidelines:
+BBefore you submit a pull request, check that it meets these guidelines:
 
-1. The pull request should include tests.
-2. If the pull request adds functionality, the docs should be updated. Put
-   your new functionality into a function with a docstring, and add the
-   feature to the list in README.rst.
-3. The pull request should work for Python 2.7, 3.4, 3.5 and 3.6. Check
-   https://travis-ci.org/nephila/giturlparse/pull_requests
-   and make sure that the tests pass for all supported Python versions.
+#. Pull request must be named with the following naming scheme:
+
+   ``<type>/(<optional-task-type>-)<number>-description``
+
+   See below for available types.
+
+#. The pull request should include tests.
+#. If the pull request adds functionality, the docs should be updated.
+   Documentation must be added in ``README.rst`` file, and must include usage
+   information for the end user.
+   In case of public API method, add extended docstrings with full parameters
+   description and usage example.
+#. Add a changes file in ``changes`` directory describing the contribution in
+   one line. It will be added automatically to the history file upon release.
+   File must be named as ``<issue-number>.<type>`` with type being:
+
+   * ``.feature``: For new features.
+   * ``.bugfix``: For bug fixes.
+   * ``.doc``: For documentation improvement.
+   * ``.removal``: For deprecation or removal of public API.
+   * ``.misc``: For general issues.
+
+   Check `towncrier`_ documentation for more details.
+
+#. The pull request should work for all python versions declared in tox.ini.
+   Check the CI and make sure that the tests pass for all supported versions.
+
+Release a version
+=================
+
+#. Update authors file
+#. Merge ``develop`` on ``master`` branch
+#. Bump release via task: ``inv tag-release (major|minor|patch)``
+#. Update changelog via towncrier: ``towncrier --yes``
+#. Commit changelog with ``git commit --amend`` to merge with bumpversion commit
+#. Create tag ``git tag <version>``
+#. Push tag to github
+#. Publish the release from the tags page
+#. If pipeline succeeds, push ``master``
+#. Merge ``master`` back on ``develop``
+#. Bump developement version via task: ``inv tag-dev -l (major|minor|patch)``
+#. Push ``develop``
+
+.. _towncrier: https://pypi.org/project/towncrier/#news-fragments
