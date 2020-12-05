@@ -109,7 +109,7 @@ Testing tips
 ------------
 You can test your project using any specific version of python.
 
-For example ``tox -epy3.7`` runs the tests on python 3.7.
+For example ``tox -epy37`` runs the tests on python 3.7.
 
 Pull Request Guidelines
 =======================
