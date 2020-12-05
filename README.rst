@@ -8,18 +8,38 @@ This is a fork of giturlparse.py with updated parsers.
 
 Original project can be found at https://github.com/FriendCode/giturlparse.py
 
+************
 Installing
-----------
+************
 
 ::
 
     pip install giturlparse
 
+******************
 Examples
---------
+******************
+
+Exposed attributes
+==================
+
+* ``platform``: platform codename
+* ``host``: server hostname
+* ``resource``: same as ``host``
+* ``port``: URL port (only if explicitly defined in URL)
+* ``protocol``: URL protocol (git, ssh, http/https)
+* ``protocols``: list of protocols explicitly defined in URL
+* ``user``: repository user
+* ``owner``: repository owner (user or organization)
+* ``repo``: repository name
+* ``name``: same as ``repo``
+* ``groups``: list of groups - gitlab only
+* ``path``: path to file or directory (includes the branch name) - gitlab / github only
+* ``path_raw``: raw path starting from the repo name (might include platform keyword) - gitlab / github only
+* ``branch``: branch name (when parseable) - gitlab / github only
 
 Parse
------
+==================
 
 ::
 
@@ -33,7 +53,7 @@ Parse
 
 
 Rewrite
--------
+==================
 
 ::
 
@@ -47,7 +67,7 @@ Rewrite
     # => ('git@github.com:Org/Private-repo.git', 'https://github.com/Org/Private-repo.git', 'git://github.com/Org/Private-repo.git', None)
 
 URLS
-----
+==================
 
 Alternative URLs for same repo::
 
@@ -63,7 +83,7 @@ Alternative URLs for same repo::
     # }
 
 Validate
---------
+==================
 
 ::
 
@@ -80,13 +100,13 @@ Validate
     # => True
 
 Tests
------
+==================
 
 ::
 
     python setup.py test
 
 License
--------
+==================
 
 Apache v2 (Check out LICENSE file)

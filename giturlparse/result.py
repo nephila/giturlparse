@@ -1,3 +1,5 @@
+from copy import copy
+
 from .platforms import PLATFORMS
 
 # Possible values to extract from a Git Url
@@ -20,7 +22,6 @@ class GitUrlParsed:
         for name, platform in PLATFORMS:
             if name == self.platform:
                 self._platform_obj = platform
-
                 break
 
     def _valid_attrs(self):
@@ -42,23 +43,37 @@ class GitUrlParsed:
         return self.domain
 
     @property
+    def resource(self):
+        return self.domain
+
+    @property
+    def name(self):
+        return self.repo
+
+    @property
     def user(self):
         if hasattr(self, "_user"):
             return self._user
 
         return self.owner
 
-    ##
-    # Format URL to protocol
-    ##
-    def format(self, protocol):  # NOQA
-        return self._platform_obj.FORMATS[protocol] % self._parsed
+    @property
+    def groups(self):
+        if self.groups_path:
+            return self.groups_path.split("/")
+        else:
+            return []
 
-    ##
-    # Normalize
-    ##
+    def format(self, protocol):  # noqa : A0003
+        """Reformat URL to protocol."""
+        items = copy(self._parsed)
+        items["port_slash"] = "%s/" % self.port if self.port else ""
+        items["groups_slash"] = "%s/" % self.groups_path if self.groups_path else ""
+        return self._platform_obj.FORMATS[protocol] % items
+
     @property
     def normalized(self):
+        """Normalize URL."""
         return self.format(self.protocol)
 
     ##
