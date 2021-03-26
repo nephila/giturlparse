@@ -38,6 +38,9 @@ class BasePlatform:
     def clean_data(data):
         data["path"] = ""
         data["branch"] = ""
-        data["protocols"] = list(filter(lambda x: x, data["protocols"].split("+")))
+        try:
+            data["protocols"] = list(filter(lambda x: x, data["protocols"].split("+"))) if type(data["protocols"]) is str else ""
+        except KeyError:
+            data["protocols"] = ""
         data["pathname"] = data["pathname"].strip(":")
         return data
