@@ -452,6 +452,7 @@ VALID_PARSE_URLS = (
 
 INVALID_PARSE_URLS = (
     ("SSH No Username", "@github.com:Org/Repo.git"),
+    ("SSH Wrong Username Other Hostname", "bonanza@host.org:Org/Repo.git"),
     ("SSH No Repo", "git@github.com:Org"),
     ("HTTPS No Repo", "https://github.com/Org"),
     ("GIT No Repo", "git://github.com/Org"),
