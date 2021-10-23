@@ -4,10 +4,10 @@ import re
 
 class BasePlatform:
     FORMATS = {
-        "ssh": r"(?P<protocols>(git\+)?(?P<protocol>ssh))?(://)?%(_user)s@%(host)s:%(repo)s.git",
-        "http": r"(?P<protocols>(git\+)?(?P<protocol>http))://%(host)s/%(repo)s.git",
-        "https": r"(?P<protocols>(git\+)?(?P<protocol>https))://%(host)s/%(repo)s.git",
-        "git": r"(?P<protocols>(?P<protocol>git))://%(host)s/%(repo)s.git",
+        "ssh": r"(?P<protocols>(git\+)?(?P<protocol>ssh))?(://)?%(_user)s@%(host)s:%(repo)s%(dot_git)s",
+        "http": r"(?P<protocols>(git\+)?(?P<protocol>http))://%(host)s/%(repo)s%(dot_git)s",
+        "https": r"(?P<protocols>(git\+)?(?P<protocol>https))://%(host)s/%(repo)s%(dot_git)s",
+        "git": r"(?P<protocols>(?P<protocol>git))://%(host)s/%(repo)s%(dot_git)s",
     }
 
     PATTERNS = {
@@ -39,5 +39,5 @@ class BasePlatform:
         data["path"] = ""
         data["branch"] = ""
         data["protocols"] = list(filter(lambda x: x, data["protocols"].split("+")))
-        data["pathname"] = data["pathname"].strip(":")
+        data["pathname"] = data["pathname"].strip(":").rstrip("/")
         return data
