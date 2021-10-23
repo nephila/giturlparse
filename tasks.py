@@ -12,7 +12,7 @@ SPECIAL_BRANCHES = ("master", "develop", "release")
 
 @task
 def clean(c):
-    """ Remove artifacts and binary files. """
+    """Remove artifacts and binary files."""
     c.run("python setup.py clean --all")
     patterns = ["build", "dist"]
     patterns.extend(glob("*.egg*"))
@@ -24,19 +24,19 @@ def clean(c):
 
 @task
 def lint(c):
-    """ Run linting tox environments. """
+    """Run linting tox environments."""
     c.run("tox -epep8,isort,black,pypi-description")
 
 
 @task  # NOQA
 def format(c):  # NOQA
-    """ Run code formatting tasks. """
+    """Run code formatting tasks."""
     c.run("tox -eblacken,isort_format")
 
 
 @task
 def towncrier_check(c):  # NOQA
-    """ Check towncrier files. """
+    """Check towncrier files."""
     output = io.StringIO()
     c.run("git branch --contains HEAD", out_stream=output)
     skipped_branch_prefix = ["pull/", "develop", "master", "HEAD"]
@@ -89,19 +89,19 @@ def towncrier_check(c):  # NOQA
 
 @task
 def test(c):
-    """ Run test in local environment. """
+    """Run test in local environment."""
     c.run("python setup.py test")
 
 
 @task
 def test_all(c):
-    """ Run all tox environments. """
+    """Run all tox environments."""
     c.run("tox")
 
 
 @task
 def coverage(c):
-    """ Run test with coverage in local environment. """
+    """Run test with coverage in local environment."""
     c.run("coverage erase")
     c.run("run setup.py test")
     c.run("report -m")
@@ -109,11 +109,11 @@ def coverage(c):
 
 @task
 def tag_release(c, level):
-    """ Tag release version. """
+    """Tag release version."""
     c.run("bumpversion --list %s --no-tag" % level)
 
 
 @task
 def tag_dev(c, level="patch"):
-    """ Tag development version. """
+    """Tag development version."""
     c.run("bumpversion --list %s --message='Bump develop version [ci skip]' --no-tag" % level)
