@@ -104,7 +104,7 @@ Tests
 
 ::
 
-    python setup.py test
+    python -munittest
 
 License
 ==================
