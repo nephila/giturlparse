@@ -1,3 +1,5 @@
+import re
+
 from .base import BasePlatform
 
 
@@ -33,7 +35,14 @@ class GitHubPlatform(BasePlatform):
     def clean_data(data):
         data = BasePlatform.clean_data(data)
         if data["path_raw"].startswith("/blob/"):
-            data["path"] = data["path_raw"].replace("/blob/", "")
+            path = data["path_raw"].replace("/blob/", "")
+            branch_regex = re.compile(r"[^/]+")
+            match = branch_regex.match(path)
+            branch = match and match[0]
+            data["branch"] = branch
+            if branch:
+                path = path.replace(branch + "/", "")
+            data["path"] = path
         if data["path_raw"].startswith("/tree/"):
             data["branch"] = data["path_raw"].replace("/tree/", "")
         return data
