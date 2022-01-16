@@ -6,6 +6,9 @@ from giturlparse import parse
 REWRITE_URLS = (
     # GitHub SSH
     ("git@github.com:Org/Repo.git", "ssh", "git@github.com:Org/Repo.git"),
+    ("git@github.com:Org/Repo.git/", "ssh", "git@github.com:Org/Repo.git"),
+    ("git@github.com/Org/Repo", "ssh", "git@github.com:Org/Repo.git"),
+    ("git@github.com/Org/Repo/", "ssh", "git@github.com:Org/Repo.git"),
     ("git@github.com:Org/Repo.git", "https", "https://github.com/Org/Repo.git"),
     ("git@github.com:Org/Repo.git", "git", "git://github.com/Org/Repo.git"),
     # GitHub HTTPS
