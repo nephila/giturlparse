@@ -90,7 +90,7 @@ def towncrier_check(c):  # NOQA
 @task
 def test(c):
     """Run test in local environment."""
-    c.run("python setup.py test")
+    c.run("python -munittest")
 
 
 @task
@@ -103,8 +103,8 @@ def test_all(c):
 def coverage(c):
     """Run test with coverage in local environment."""
     c.run("coverage erase")
-    c.run("run setup.py test")
-    c.run("report -m")
+    c.run("coverage run -m unittest")
+    c.run("coverage report -m")
 
 
 @task
