@@ -41,7 +41,7 @@ def parse(url, check_domain=True):
             domain = match.group("domain")
             # print('[%s] DOMAIN = %s' % (url, domain,))
             if check_domain:
-                if platform.DOMAINS and not (domain in platform.DOMAINS):
+                if platform.DOMAINS and domain not in platform.DOMAINS:
                     continue
                 if platform.SKIP_DOMAINS and domain in platform.SKIP_DOMAINS:
                     continue

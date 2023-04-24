@@ -2,5 +2,4 @@
 coverage
 coveralls
 mock>=1.0.1
-flake8
 tox

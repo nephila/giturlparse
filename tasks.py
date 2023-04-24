@@ -25,7 +25,7 @@ def clean(c):
 @task
 def lint(c):
     """Run linting tox environments."""
-    c.run("tox -epep8,isort,black,pypi-description")
+    c.run("tox -eruff,isort,black,pypi-description")
 
 
 @task  # NOQA
