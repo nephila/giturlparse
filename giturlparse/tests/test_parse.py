@@ -546,6 +546,30 @@ VALID_PARSE_URLS = (
             },
         ),
     ),
+    (
+        "GIT",
+        (
+            "joe@github.com-work:nephila/giturlparse.git",
+            {
+                "host": "github.com-work",
+                "resource": "github.com-work",
+                "user": "joe",
+                "port": "",
+                "owner": "nephila",
+                "repo": "giturlparse",
+                "name": "giturlparse",
+                "groups": [],
+                "path": "",
+                "path_raw": "",
+                "pathname": "nephila/giturlparse.git",
+                "branch": "",
+                "protocol": "ssh",
+                "protocols": [],
+                "github": False,
+                "platform": "gitlab",
+            },
+        ),
+    ),
 )
 
 INVALID_PARSE_URLS = (
