@@ -523,6 +523,29 @@ VALID_PARSE_URLS = (
             },
         ),
     ),
+    (
+        "GIT",
+        (
+            "git://git.buildroot.net/buildroot",
+            {
+                "host": "git.buildroot.net",
+                "resource": "git.buildroot.net",
+                "user": "",
+                "port": "",
+                "owner": "",
+                "repo": "buildroot",
+                "name": "buildroot",
+                "groups": [],
+                "path": "",
+                "path_raw": "",
+                "pathname": "",
+                "branch": "",
+                "protocol": "git",
+                "protocols": ["git"],
+                "github": False,
+            },
+        ),
+    ),
 )
 
 INVALID_PARSE_URLS = (

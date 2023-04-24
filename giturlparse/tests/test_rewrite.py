@@ -38,6 +38,10 @@ REWRITE_URLS = (
     ("git@git.assembla.com:SomeRepoID.git", "git", "git://git.assembla.com/SomeRepoID.git"),
     # FriendCode HTTPS
     ("https://friendco.de/Aaron@user/test-repo.git", "https", "https://friendco.de/Aaron@user/test-repo.git"),
+    # Generic
+    ("git://git.buildroot.net/buildroot", "https", "https://git.buildroot.net/buildroot.git"),
+    ("https://git.buildroot.net/buildroot", "git", "git://git.buildroot.net/buildroot.git"),
+    ("https://git.buildroot.net/buildroot", "ssh", "git@git.buildroot.net:buildroot.git"),
     # Gitlab SSH
     ("git@host.org:Org/Repo.git", "ssh", "git@host.org:Org/Repo.git"),
     ("git@host.org:9999/Org/Repo.git", "ssh", "git@host.org:9999/Org/Repo.git"),
