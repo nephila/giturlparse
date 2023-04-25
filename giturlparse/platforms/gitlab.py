@@ -4,20 +4,20 @@ from .base import BasePlatform
 class GitLabPlatform(BasePlatform):
     PATTERNS = {
         "https": (
-            r"(?P<protocols>(git\+)?(?P<protocol>https))://(?P<domain>.+?)(?P<port>:[0-9]+)?"
+            r"(?P<protocols>(git\+)?(?P<protocol>https))://(?P<domain>[^:/]+)(?P<port>:[0-9]+)?"
             r"(?P<pathname>/(?P<owner>[^/]+?)/"
             r"(?P<groups_path>.*?)?(?(groups_path)/)?(?P<repo>[^/]+?)(?:(\.git)?(/)?)"
             r"(?P<path_raw>(/blob/|/-/tree/).+)?)$"
         ),
         "ssh": (
-            r"(?P<protocols>(git\+)?(?P<protocol>ssh))?(://)?(?P<_user>.+?)@(?P<domain>.+?):(?P<port>[0-9]+)?(?(port))?"
+            r"(?P<protocols>(git\+)?(?P<protocol>ssh))?(://)?(?P<_user>.+?)@(?P<domain>[^:/]+)(:)?(?P<port>[0-9]+)?(?(port))?"
             r"(?P<pathname>/?(?P<owner>[^/]+)/"
             r"(?P<groups_path>.*?)?(?(groups_path)/)?(?P<repo>[^/]+?)(?:(\.git)?(/)?)"
             r"(?P<path_raw>(/blob/|/-/tree/).+)?)$"
         ),
         "git": (
-            r"(?P<protocols>(?P<protocol>git))://(?P<domain>.+?):(?P<port>[0-9]+)?(?(port))?"
-            r"(?P<pathname>/?(?P<owner>[^/]+)/"
+            r"(?P<protocols>(?P<protocol>git))://(?P<domain>[^:/]+):?(?P<port>[0-9]+)?(?(port))?"
+            r"(?P<pathname>/(?P<owner>[^/]+?)/"
             r"(?P<groups_path>.*?)?(?(groups_path)/)?(?P<repo>[^/]+?)(?:(\.git)?(/)?)"
             r"(?P<path_raw>(/blob/|/-/tree/).+)?)$"
         ),
