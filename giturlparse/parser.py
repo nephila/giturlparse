@@ -22,6 +22,7 @@ def parse(url, check_domain=True):
     parsed_info["port"] = ""
     parsed_info["path_raw"] = ""
     parsed_info["groups_path"] = ""
+    parsed_info["owner"] = ""
 
     # Defaults to all attributes
     map(parsed_info.setdefault, SUPPORTED_ATTRIBUTES)
