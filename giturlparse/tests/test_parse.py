@@ -411,6 +411,29 @@ VALID_PARSE_URLS = (
     (
         "HTTPS",
         (
+            "https://github.com/rubygems/rubygems/",
+            {
+                "host": "github.com",
+                "resource": "github.com",
+                "user": "git",
+                "port": "",
+                "owner": "rubygems",
+                "repo": "rubygems",
+                "name": "rubygems",
+                "groups": [],
+                "path": "",
+                "path_raw": "",
+                "pathname": "/rubygems/rubygems",
+                "branch": "",
+                "protocol": "https",
+                "protocols": ["https"],
+                "platform": "github",
+            },
+        ),
+    ),
+    (
+        "HTTPS",
+        (
             "https://gitlab.com/nephila/giturlparse/blob/master/giturlparse/github.py",
             {
                 "host": "gitlab.com",
