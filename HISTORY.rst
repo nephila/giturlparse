@@ -6,6 +6,25 @@ History
 
 .. towncrier release notes start
 
+0.11.0 (2023-08-03)
+===================
+
+Features
+--------
+
+- Add parsing variable for user to gitlab parser (#47)
+- Add support for Python 3.8+ (#48)
+
+
+Bugfixes
+--------
+
+- Update tests invocation method to avoid future breakages (#29)
+- Update linting tools and fix code style (#34)
+- Add more github use cases (#43)
+- Fix parsing generic git url (#46)
+
+
 0.10.0 (2020-12-05)
 ===================
 
