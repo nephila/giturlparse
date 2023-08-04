@@ -35,7 +35,6 @@ def parse(url, check_domain=True):
 
             # Skip if not matched
             if not match:
-                print("[{}] URL: {} dit not match {}".format(name, url, regex.pattern))
                 continue
 
             # Skip if domain is bad

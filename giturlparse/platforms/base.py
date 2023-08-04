@@ -35,7 +35,6 @@ class BasePlatform:
 
     @staticmethod
     def clean_data(data):
-        print(data)
         data["path"] = ""
         data["branch"] = ""
         data["protocols"] = list(filter(lambda x: x, data.get("protocols", "").split("+")))
