@@ -6,6 +6,15 @@ History
 
 .. towncrier release notes start
 
+0.11.1 (2023-08-04)
+===================
+
+Bugfixes
+--------
+
+- Remove debug print statements (#66)
+
+
 0.11.0 (2023-08-03)
 ===================
 

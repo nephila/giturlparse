@@ -3,7 +3,7 @@ from .result import GitUrlParsed
 
 __author__ = "Iacopo Spalletti"
 __email__ = "i.spalletti@nephila.it"
-__version__ = "0.11.0"
+__version__ = "0.11.1"
 
 
 def parse(url, check_domain=True):
