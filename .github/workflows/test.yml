@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11", "3.10", "3.9"]
+        python-version: [3.11.x, 3.10.x, 3.9, 3.8]
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
@@ -26,9 +26,9 @@ jobs:
       uses: actions/cache@v3
       with:
         path: .tox
-        key: ${{ runner.os }}-tox-${{ format('{{py{0}}}', matrix.python-version) }}-${{ hashFiles('setup.cfg') }}
+        key: ${{ runner.os }}-tox-${{ format('py', matrix.python-version) }}-${{ hashFiles('setup.cfg') }}
         restore-keys: |
-          ${{ runner.os }}-tox-${{ format('{{py{0}}}', matrix.python-version) }}-
+          ${{ runner.os }}-tox-${{ format('py', matrix.python-version) }}-
     - name: Install dependencies
       run: |
         sudo apt-get install gettext
