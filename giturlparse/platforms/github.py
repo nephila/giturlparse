@@ -4,7 +4,8 @@ from .base import BasePlatform
 class GitHubPlatform(BasePlatform):
     PATTERNS = {
         "https": (
-            r"(?P<protocols>(git\+)?(?P<protocol>https))://(?P<domain>[^/]+?)"
+            r"(?P<protocols>(git\+)?(?P<protocol>https))://"
+            r"((?P<username>[^/]+?):(?P<access_token>[^/]+?)@)?(?P<domain>[^/]+?)"
             r"(?P<pathname>/(?P<owner>[^/]+?)/(?P<repo>[^/]+?)(?:(\.git)?(/)?)(?P<path_raw>(/blob/|/tree/).+)?)$"
         ),
         "ssh": (

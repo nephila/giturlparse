@@ -13,6 +13,8 @@ SUPPORTED_ATTRIBUTES = (
     "url",
     "platform",
     "protocol",
+    "username",
+    "access_token",
 )
 
 
