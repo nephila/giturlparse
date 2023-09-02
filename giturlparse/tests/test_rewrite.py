@@ -56,6 +56,11 @@ REWRITE_URLS = (
         "ssh",
         "git@host.org:Org/Group/Repo.git/-/blob/master/file.py",
     ),
+    (
+        "https://host.org/Org/Group/Repo/blob/master/file.py",
+        "ssh",
+        "git@host.org:Org/Group/Repo.git/blob/master/file.py",
+    ),
 )
 
 INVALID_PARSE_URLS = (

@@ -7,19 +7,19 @@ class GitLabPlatform(BasePlatform):
             r"(?P<protocols>(git\+)?(?P<protocol>https))://(?P<domain>[^:/]+)(?P<port>:[0-9]+)?"
             r"(?P<pathname>/(?P<owner>[^/]+?)/"
             r"(?P<groups_path>.*?)?(?(groups_path)/)?(?P<repo>[^/]+?)(?:(\.git)?(/)?)"
-            r"(?P<path_raw>(/-/blob/|/-/tree/).+)?)$"
+            r"(?P<path_raw>(/blob/|/-/blob/|/-/tree/).+)?)$"
         ),
         "ssh": (
             r"(?P<protocols>(git\+)?(?P<protocol>ssh))?(://)?(?P<_user>.+?)@(?P<domain>[^:/]+)(:)?(?P<port>[0-9]+)?(?(port))?"
             r"(?P<pathname>/?(?P<owner>[^/]+)/"
             r"(?P<groups_path>.*?)?(?(groups_path)/)?(?P<repo>[^/]+?)(?:(\.git)?(/)?)"
-            r"(?P<path_raw>(/-/blob/|/-/tree/).+)?)$"
+            r"(?P<path_raw>(/blob/|/-/blob/|/-/tree/).+)?)$"
         ),
         "git": (
             r"(?P<protocols>(?P<protocol>git))://(?P<domain>[^:/]+):?(?P<port>[0-9]+)?(?(port))?"
             r"(?P<pathname>/(?P<owner>[^/]+?)/"
             r"(?P<groups_path>.*?)?(?(groups_path)/)?(?P<repo>[^/]+?)(?:(\.git)?(/)?)"
-            r"(?P<path_raw>(/-/blob/|/-/tree/).+)?)$"
+            r"(?P<path_raw>(/blob/|/-/blob/|/-/tree/).+)?)$"
         ),
     }
     FORMATS = {
@@ -36,6 +36,8 @@ class GitLabPlatform(BasePlatform):
     @staticmethod
     def clean_data(data):
         data = BasePlatform.clean_data(data)
+        if data["path_raw"].startswith("/blob/"):
+            data["path"] = data["path_raw"].replace("/blob/", "")
         if data["path_raw"].startswith("/-/blob/"):
             data["path"] = data["path_raw"].replace("/-/blob/", "")
         if data["path_raw"].startswith("/-/tree/"):
