@@ -52,9 +52,9 @@ REWRITE_URLS = (
     ("https://host.org/Org/Repo.git", "https", "https://host.org/Org/Repo.git"),
     ("https://host.org/Org/Group/Repo.git", "ssh", "git@host.org:Org/Group/Repo.git"),
     (
-        "https://host.org/Org/Group/Repo/blob/master/file.py",
+        "https://host.org/Org/Group/Repo/-/blob/master/file.py",
         "ssh",
-        "git@host.org:Org/Group/Repo.git/blob/master/file.py",
+        "git@host.org:Org/Group/Repo.git/-/blob/master/file.py",
     ),
 )
 

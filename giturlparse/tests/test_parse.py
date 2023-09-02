@@ -434,7 +434,7 @@ VALID_PARSE_URLS = (
     (
         "HTTPS",
         (
-            "https://gitlab.com/nephila/giturlparse/blob/master/giturlparse/github.py",
+            "https://gitlab.com/nephila/giturlparse/-/blob/master/giturlparse/github.py",
             {
                 "host": "gitlab.com",
                 "resource": "gitlab.com",
@@ -445,8 +445,8 @@ VALID_PARSE_URLS = (
                 "name": "giturlparse",
                 "groups": [],
                 "path": "master/giturlparse/github.py",
-                "path_raw": "/blob/master/giturlparse/github.py",
-                "pathname": "/nephila/giturlparse/blob/master/giturlparse/github.py",
+                "path_raw": "/-/blob/master/giturlparse/github.py",
+                "pathname": "/nephila/giturlparse/-/blob/master/giturlparse/github.py",
                 "branch": "",
                 "protocol": "https",
                 "protocols": ["https"],
@@ -457,7 +457,8 @@ VALID_PARSE_URLS = (
     (
         "HTTPS",
         (
-            "https://gitlab.com/nephila/group2/third-group/giturlparse/blob/master/" "giturlparse/platforms/github.py",
+            "https://gitlab.com/nephila/group2/third-group/giturlparse/-/blob/master/"
+            "giturlparse/platforms/github.py",
             {
                 "host": "gitlab.com",
                 "resource": "gitlab.com",
@@ -468,8 +469,8 @@ VALID_PARSE_URLS = (
                 "name": "giturlparse",
                 "groups": ["group2", "third-group"],
                 "path": "master/giturlparse/platforms/github.py",
-                "path_raw": "/blob/master/giturlparse/platforms/github.py",
-                "pathname": "/nephila/group2/third-group/giturlparse/blob/master/" "giturlparse/platforms/github.py",
+                "path_raw": "/-/blob/master/giturlparse/platforms/github.py",
+                "pathname": "/nephila/group2/third-group/giturlparse/-/blob/master/" "giturlparse/platforms/github.py",
                 "branch": "",
                 "protocol": "https",
                 "protocols": ["https"],
@@ -480,7 +481,7 @@ VALID_PARSE_URLS = (
     (
         "SSH",
         (
-            "git@host.org:9999/Org/Group/subGroup/Repo.git/blob/master/giturlparse/github.py",
+            "git@host.org:9999/Org/Group/subGroup/Repo.git/-/blob/master/giturlparse/github.py",
             {
                 "host": "host.org",
                 "resource": "host.org",
@@ -491,8 +492,8 @@ VALID_PARSE_URLS = (
                 "name": "Repo",
                 "groups": ["Group", "subGroup"],
                 "path": "master/giturlparse/github.py",
-                "path_raw": "/blob/master/giturlparse/github.py",
-                "pathname": "/Org/Group/subGroup/Repo.git/blob/master/giturlparse/github.py",
+                "path_raw": "/-/blob/master/giturlparse/github.py",
+                "pathname": "/Org/Group/subGroup/Repo.git/-/blob/master/giturlparse/github.py",
                 "branch": "",
                 "protocol": "ssh",
                 "protocols": [],
@@ -503,7 +504,7 @@ VALID_PARSE_URLS = (
     (
         "GIT",
         (
-            "git://host.org:9999/Org/Group/subGroup/Repo.git/blob/master/giturlparse/github.py",
+            "git://host.org:9999/Org/Group/subGroup/Repo.git/-/blob/master/giturlparse/github.py",
             {
                 "host": "host.org",
                 "resource": "host.org",
@@ -514,8 +515,8 @@ VALID_PARSE_URLS = (
                 "name": "Repo",
                 "groups": ["Group", "subGroup"],
                 "path": "master/giturlparse/github.py",
-                "path_raw": "/blob/master/giturlparse/github.py",
-                "pathname": "/Org/Group/subGroup/Repo.git/blob/master/giturlparse/github.py",
+                "path_raw": "/-/blob/master/giturlparse/github.py",
+                "pathname": "/Org/Group/subGroup/Repo.git/-/blob/master/giturlparse/github.py",
                 "branch": "",
                 "protocol": "git",
                 "protocols": ["git"],
@@ -526,7 +527,7 @@ VALID_PARSE_URLS = (
     (
         "GIT",
         (
-            "git://host.org/Org/Group/subGroup/Repo.git/blob/master/giturlparse/github.py",
+            "git://host.org/Org/Group/subGroup/Repo.git/-/blob/master/giturlparse/github.py",
             {
                 "host": "host.org",
                 "resource": "host.org",
@@ -537,8 +538,8 @@ VALID_PARSE_URLS = (
                 "name": "Repo",
                 "groups": ["Group", "subGroup"],
                 "path": "master/giturlparse/github.py",
-                "path_raw": "/blob/master/giturlparse/github.py",
-                "pathname": "/Org/Group/subGroup/Repo.git/blob/master/giturlparse/github.py",
+                "path_raw": "/-/blob/master/giturlparse/github.py",
+                "pathname": "/Org/Group/subGroup/Repo.git/-/blob/master/giturlparse/github.py",
                 "branch": "",
                 "protocol": "git",
                 "protocols": ["git"],
