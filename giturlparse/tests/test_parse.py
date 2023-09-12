@@ -133,6 +133,33 @@ VALID_PARSE_URLS = (
     (
         "HTTPS",
         (
+            "https://username:access_token@github.com/Org/Repo.git",
+            {
+                "host": "github.com",
+                "resource": "github.com",
+                "user": "git",
+                "port": "",
+                "owner": "Org",
+                "repo": "Repo",
+                "name": "Repo",
+                "groups": [],
+                "path": "",
+                "path_raw": "",
+                "pathname": "/Org/Repo.git",
+                "branch": "",
+                "protocol": "https",
+                "protocols": ["https"],
+                "username": "username",
+                "access_token": "access_token",
+                "github": True,
+                "bitbucket": False,
+                "assembla": False,
+            },
+        ),
+    ),
+    (
+        "HTTPS",
+        (
             "https://github.com/foo-bar/xpwn",
             {
                 "host": "github.com",
@@ -503,7 +530,7 @@ VALID_PARSE_URLS = (
     (
         "HTTPS",
         (
-            "https://gitlab.com/nephila/giturlparse/-/blob/master/giturlparse/github.py",
+            "https://username:access_token@gitlab.com/nephila/giturlparse/~/blob/master/giturlparse/github.py",
             {
                 "host": "gitlab.com",
                 "resource": "gitlab.com",
@@ -517,6 +544,8 @@ VALID_PARSE_URLS = (
                 "path_raw": "/-/blob/master/giturlparse/github.py",
                 "pathname": "/nephila/giturlparse/-/blob/master/giturlparse/github.py",
                 "branch": "",
+                "username": "username",
+                "access_token": "access_token",
                 "protocol": "https",
                 "protocols": ["https"],
                 "platform": "gitlab",

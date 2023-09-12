@@ -37,6 +37,8 @@ Exposed attributes
 * ``path``: path to file or directory (includes the branch name) - gitlab / github only
 * ``path_raw``: raw path starting from the repo name (might include platform keyword) - gitlab / github only
 * ``branch``: branch name (when parseable) - gitlab / github only
+* ``username``: username from ``<username>:<access_token>@<url>`` gitlab / github urls
+* ``access_token``: access token from ``<username>:<access_token>@<url>`` gitlab / github urls
 
 Parse
 ==================
