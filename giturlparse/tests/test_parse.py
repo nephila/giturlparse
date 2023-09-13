@@ -530,7 +530,7 @@ VALID_PARSE_URLS = (
     (
         "HTTPS",
         (
-            "https://username:access_token@gitlab.com/nephila/giturlparse/~/blob/master/giturlparse/github.py",
+            "https://username:access_token@gitlab.com/nephila/giturlparse/-/blob/master/giturlparse/github.py",
             {
                 "host": "gitlab.com",
                 "resource": "gitlab.com",
