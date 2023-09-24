@@ -6,6 +6,23 @@ History
 
 .. towncrier release notes start
 
+0.12.0 (2023-09-24)
+===================
+
+Features
+--------
+
+- Add github/gitlab username:access_token parse support (#21)
+- Migrate to bump-my-version (#79)
+
+
+Bugfixes
+--------
+
+- Fix Gitlab URLs with branch (#42)
+- Align tox.ini with github actions (#71)
+
+
 0.11.1 (2023-08-04)
 ===================
 
