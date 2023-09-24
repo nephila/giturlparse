@@ -22,3 +22,5 @@ Contributors
 * John Vandenberg
 * nooperpudd
 * Tony Osibov
+* Leonardo Cavallucci
+* Santo Cariotti
