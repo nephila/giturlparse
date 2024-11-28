@@ -52,8 +52,9 @@ def parse(url, check_domain=True):
             parsed_info.update(platform.DEFAULTS)
 
             # Get matches as dictionary
-            matches = platform.clean_data({k: v if v is not None else platform.DEFAULTS.get(k, "")
-                                           for k, v in match.groupdict().items()})
+            matches = platform.clean_data(
+                {k: v if v is not None else platform.DEFAULTS.get(k, "") for k, v in match.groupdict().items()}
+            )
 
             # Update info with matches
             parsed_info.update(matches)
