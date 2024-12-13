@@ -17,9 +17,9 @@ class BasePlatform:
     }
 
     # None means it matches all domains
-    DOMAINS = None
-    SKIP_DOMAINS = None
-    DEFAULTS = {}
+    DOMAINS: tuple[str, ...]|None = None
+    SKIP_DOMAINS: tuple[str, ...]|None = None
+    DEFAULTS : dict[str, str] = {}
 
     def __init__(self):
         # Precompile PATTERNS
