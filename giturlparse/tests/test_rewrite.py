@@ -71,6 +71,20 @@ INVALID_PARSE_URLS = (
 )
 
 
+REWRITE_COMPONENTS = {
+    "name": {
+        "source": "git@github.com:Org/Repo.git",
+        "value": "New-repo",
+        "expected": "git@github.com:Org/New-repo.git",
+    },
+    "owner": {
+        "source": "git@github.com:Org/Repo.git",
+        "value": "New-Org",
+        "expected": "git@github.com:New-Org/Repo.git",
+    },
+}
+
+
 class UrlRewriteTestCase(unittest.TestCase):
     def _test_rewrite(self, source, protocol, expected):
         parsed = parse(source)
@@ -80,6 +94,16 @@ class UrlRewriteTestCase(unittest.TestCase):
     def test_rewrites(self):
         for data in REWRITE_URLS:
             self._test_rewrite(*data)
+
+    def _test_rewrite_components(self, field, data):
+        parsed = parse(data["source"])
+        setattr(parsed, field, data["value"])
+        self.assertTrue(parsed.valid, "Invalid Url: %s" % data["source"])
+        return self.assertEqual(parsed.url, data["expected"])
+
+    def test_rewrite_components(self):
+        for field, data in REWRITE_COMPONENTS.items():
+            self._test_rewrite_components(field, data)
 
 
 # Test Suite
