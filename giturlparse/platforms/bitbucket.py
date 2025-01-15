@@ -4,7 +4,7 @@ from .base import BasePlatform
 class BitbucketPlatform(BasePlatform):
     PATTERNS = {
         "https": (
-            r"(?P<protocols>(git\+)?(?P<protocol>https))://(?P<_user>.+)@(?P<domain>.+?)"
+            r"(?P<protocols>(git\+)?(?P<protocol>https))://(?:(?P<_user>.+)@)?(?P<domain>.+?)"
             r"(?P<pathname>/(?P<owner>.+)/(?P<repo>.+?)(?:\.git)?)$"
         ),
         "ssh": (
@@ -16,5 +16,5 @@ class BitbucketPlatform(BasePlatform):
         "https": r"https://%(owner)s@%(domain)s/%(owner)s/%(repo)s%(dot_git)s",
         "ssh": r"git@%(domain)s:%(owner)s/%(repo)s%(dot_git)s",
     }
-    DOMAINS = ("bitbucket.org",)
+    DOMAINS = ("bitbucket.org", "bitbucket.com")
     DEFAULTS = {"_user": "git"}
