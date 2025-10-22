@@ -6,6 +6,15 @@ History
 
 .. towncrier release notes start
 
+0.14.0 (2025-10-22)
+===================
+
+Features
+--------
+
+- Allow rewriting repo and owner (#0)
+
+
 0.13.0 (2025-10-22)
 ===================
 
