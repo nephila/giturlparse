@@ -1,1 +1,0 @@
-Remove fix-encoding-pragma from pre-commit hooks as it is deprecated

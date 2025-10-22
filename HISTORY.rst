@@ -6,6 +6,22 @@ History
 
 .. towncrier release notes start
 
+0.13.0 (2025-10-22)
+===================
+
+Features
+--------
+
+- Switch to Coveralls Github action (#88)
+
+
+Bugfixes
+--------
+
+- Fix Bitbucket url parse and add bitbucket.com to recognized domains (#107)
+- Remove fix-encoding-pragma from pre-commit hooks as it is deprecated (#119)
+
+
 0.12.0 (2023-09-24)
 ===================
 

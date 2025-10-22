@@ -24,3 +24,5 @@ Contributors
 * Tony Osibov
 * Leonardo Cavallucci
 * Santo Cariotti
+* Maciej Katafiasz
+* Tamika Nomara
