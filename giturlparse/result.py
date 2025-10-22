@@ -38,6 +38,12 @@ class GitUrlParsed:
     ##
     # Alias properties
     ##
+    def _update_url(self):
+        protocol = getattr(self, "protocol", None)
+        if protocol:
+            self.url = self.format(protocol)
+            self._parsed["url"] = self.format(protocol)
+
     @property
     def host(self):
         return self.domain
@@ -49,6 +55,21 @@ class GitUrlParsed:
     @property
     def name(self):
         return self.repo
+
+    @name.setter
+    def name(self, new_name):
+        self.repo = new_name
+        self._parsed["repo"] = new_name
+        self._update_url()
+
+    @property
+    def owner(self):
+        return self._parsed["owner"]
+
+    @owner.setter
+    def owner(self, new_owner):
+        self._parsed["owner"] = new_owner
+        self._update_url()
 
     @property
     def user(self):
