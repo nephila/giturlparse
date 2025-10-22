@@ -14,9 +14,6 @@ repos:
       - id: check-executables-have-shebangs
       - id: check-merge-conflict
       - id: check-toml
-      - id: fix-encoding-pragma
-        args:
-          - --remove
   - repo: https://github.com/PyCQA/isort
     rev: "7.0.0"
     hooks:
