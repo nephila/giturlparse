@@ -10,7 +10,7 @@ class BasePlatform:
     }
 
     PATTERNS = {
-        "ssh": r"(?P<_user>.+)@(?P<domain>[^/]+?):(?P<repo>.+)(?:(\.git)?(/)?)",
+        "ssh": r"(?!.*://)(?:(?P<_user>[^@]+)@)?(?P<domain>[^/:@]+):(?P<repo>.+)(?:(\.git)?(/)?)",
         "http": r"(?P<protocols>(?P<protocol>http))://(?P<domain>[^/]+?)/(?P<repo>.+)(?:(\.git)?(/)?)",
         "https": r"(?P<protocols>(?P<protocol>https))://(?P<domain>[^/]+?)/(?P<repo>.+)(?:(\.git)?(/)?)",
         "git": r"(?P<protocols>(?P<protocol>git))://(?P<domain>[^/]+?)/(?P<repo>.+)(?:(\.git)?(/)?)",

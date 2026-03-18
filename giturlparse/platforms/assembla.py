@@ -4,7 +4,7 @@ from .base import BasePlatform
 class AssemblaPlatform(BasePlatform):
     DOMAINS = ("git.assembla.com",)
     PATTERNS = {
-        "ssh": r"(?P<protocols>(git\+)?(?P<protocol>ssh))?(://)?git@(?P<domain>.+?):(?P<pathname>(?P<repo>.+)).git",
+        "ssh": r"(?:(?P<protocols>(git\+)?(?P<protocol>ssh))://|(?!.*://))(?:(?P<_user>[^@]+)@)?(?P<domain>[^/:@]+):(?P<pathname>(?P<repo>.+)).git",
         "git": r"(?P<protocols>(?P<protocol>git))://(?P<domain>.+?)/(?P<pathname>(?P<repo>.+)).git",
     }
     FORMATS = {
