@@ -42,6 +42,22 @@ REWRITE_URLS = (
     ("git://git.buildroot.net/buildroot", "https", "https://git.buildroot.net/buildroot.git"),
     ("https://git.buildroot.net/buildroot", "git", "git://git.buildroot.net/buildroot.git"),
     ("https://git.buildroot.net/buildroot", "ssh", "git@git.buildroot.net:buildroot.git"),
+    # Userless SCP-style GitHub
+    ("github.com:Org/Repo.git", "ssh", "git@github.com:Org/Repo.git"),
+    ("github.com:Org/Repo.git", "https", "https://github.com/Org/Repo.git"),
+    ("github.com:Org/Repo.git", "git", "git://github.com/Org/Repo.git"),
+    # Userless SCP-style Bitbucket
+    ("bitbucket.org:Org/Repo.git", "ssh", "git@bitbucket.org:Org/Repo.git"),
+    ("bitbucket.org:Org/Repo.git", "https", "https://Org@bitbucket.org/Org/Repo.git"),
+    # Userless SCP-style Gitlab
+    ("host.org:Org/Repo.git", "ssh", "git@host.org:Org/Repo.git"),
+    ("host.org:Org/Repo.git", "https", "https://host.org/Org/Repo.git"),
+    ("host.org:9999/Org/Repo.git", "ssh", "git@host.org:9999/Org/Repo.git"),
+    ("host.org:9999/Org/Repo.git", "https", "https://host.org/Org/Repo.git"),
+    ("host.org:9999/Org/Repo.git", "git", "git://host.org:9999/Org/Repo.git"),
+    # Userless SCP-style Assembla
+    ("git.assembla.com:SomeRepoID.git", "ssh", "git@git.assembla.com:SomeRepoID.git"),
+    ("git.assembla.com:SomeRepoID.git", "git", "git://git.assembla.com/SomeRepoID.git"),
     # Gitlab SSH
     ("git@host.org:Org/Repo.git", "ssh", "git@host.org:Org/Repo.git"),
     ("git@host.org:9999/Org/Repo.git", "ssh", "git@host.org:9999/Org/Repo.git"),

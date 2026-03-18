@@ -12,7 +12,7 @@ class GitLabPlatform(BasePlatform):
         ),
         "ssh": (
             r"(?:(?P<protocols>(git\+)?(?P<protocol>ssh))://|(?!.*://))(?:(?P<_user>[^@]+)@)?(?P<domain>[^:/@]+)(:)?(?P<port>[0-9]+)?(?(port))?"
-            r"(?P<pathname>/?(?P<owner>[^/]+)/"
+            r"(?P<pathname>/?(?P<owner>[^/:]+)/"
             r"(?P<groups_path>.*?)?(?(groups_path)/)?(?P<repo>[^/]+?)(?:(\.git)?(/)?)"
             r"(?P<path_raw>(/blob/|/-/blob/|/-/tree/).+)?)$"
         ),
@@ -26,7 +26,7 @@ class GitLabPlatform(BasePlatform):
     FORMATS = {
         "https": r"https://%(domain)s/%(owner)s/%(groups_slash)s%(repo)s%(dot_git)s%(path_raw)s",
         "ssh": r"git@%(domain)s:%(port_slash)s%(owner)s/%(groups_slash)s%(repo)s%(dot_git)s%(path_raw)s",
-        "git": r"git://%(domain)s%(port)s/%(owner)s/%(groups_slash)s%(repo)s%(dot_git)s%(path_raw)s",
+        "git": r"git://%(domain)s%(port_colon)s/%(owner)s/%(groups_slash)s%(repo)s%(dot_git)s%(path_raw)s",
     }
     SKIP_DOMAINS = (
         "github.com",
