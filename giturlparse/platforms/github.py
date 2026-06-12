@@ -9,7 +9,7 @@ class GitHubPlatform(BasePlatform):
             r"(?P<pathname>/(?P<owner>[^/]+?)/(?P<repo>[^/]+?)(?:(\.git)?(/)?)(?P<path_raw>(/blob/|/tree/).+)?)$"
         ),
         "ssh": (
-            r"(?P<protocols>(git\+)?(?P<protocol>ssh))?(://)?git@(?P<domain>.+?)(?P<pathname>(:|/)"
+            r"(?:(?P<protocols>(git\+)?(?P<protocol>ssh))://|(?!.*://))(?:(?P<_user>[^@]+)@)?(?P<domain>[^/:@]+)(?P<pathname>(:|/)"
             r"(?P<owner>[^/]+)/(?P<repo>[^/]+?)(?:(\.git)?(/)?)"
             r"(?P<path_raw>(/blob/|/tree/).+)?)$"
         ),
