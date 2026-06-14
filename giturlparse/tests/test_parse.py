@@ -484,6 +484,80 @@ VALID_PARSE_URLS = (
     (
         "HTTPS",
         (
+            # Regression: a file path that itself contains a "blob" directory must
+            # not have the inner "/blob/" stripped (only the leading marker).
+            "https://github.com/nephila/giturlparse/blob/master/giturlparse/blob/data.py",
+            {
+                "host": "github.com",
+                "resource": "github.com",
+                "port": "",
+                "user": "git",
+                "owner": "nephila",
+                "repo": "giturlparse",
+                "name": "giturlparse",
+                "groups": [],
+                "path": "master/giturlparse/blob/data.py",
+                "path_raw": "/blob/master/giturlparse/blob/data.py",
+                "pathname": "/nephila/giturlparse/blob/master/giturlparse/blob/data.py",
+                "branch": "",
+                "protocol": "https",
+                "protocols": ["https"],
+                "platform": "github",
+            },
+        ),
+    ),
+    (
+        "HTTPS",
+        (
+            # Regression: a branch name containing "/tree/" must be preserved
+            # in full rather than having every "/tree/" removed.
+            "https://github.com/nephila/giturlparse/tree/feature/tree/x",
+            {
+                "host": "github.com",
+                "resource": "github.com",
+                "port": "",
+                "user": "git",
+                "owner": "nephila",
+                "repo": "giturlparse",
+                "name": "giturlparse",
+                "groups": [],
+                "path": "",
+                "path_raw": "/tree/feature/tree/x",
+                "pathname": "/nephila/giturlparse/tree/feature/tree/x",
+                "branch": "feature/tree/x",
+                "protocol": "https",
+                "protocols": ["https"],
+                "platform": "github",
+            },
+        ),
+    ),
+    (
+        "HTTPS",
+        (
+            # Regression (GitLab): inner "/blob/" in the file path must survive.
+            "https://gitlab.com/nephila/giturlparse/-/blob/master/giturlparse/blob/data.py",
+            {
+                "host": "gitlab.com",
+                "resource": "gitlab.com",
+                "port": "",
+                "user": "git",
+                "owner": "nephila",
+                "repo": "giturlparse",
+                "name": "giturlparse",
+                "groups": [],
+                "path": "master/giturlparse/blob/data.py",
+                "path_raw": "/-/blob/master/giturlparse/blob/data.py",
+                "pathname": "/nephila/giturlparse/-/blob/master/giturlparse/blob/data.py",
+                "branch": "",
+                "protocol": "https",
+                "protocols": ["https"],
+                "platform": "gitlab",
+            },
+        ),
+    ),
+    (
+        "HTTPS",
+        (
             "https://github.com/nephila/giturlparse/tree/feature/py37",
             {
                 "host": "github.com",
