@@ -1,0 +1,1 @@
+Fix ``path`` and ``branch`` extraction removing *every* ``/blob/`` and ``/tree/`` occurrence instead of only the leading marker, which corrupted file paths and branch names containing those segments.

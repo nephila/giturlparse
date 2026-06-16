@@ -34,7 +34,7 @@ class GitHubPlatform(BasePlatform):
     def clean_data(data):
         data = BasePlatform.clean_data(data)
         if data["path_raw"].startswith("/blob/"):
-            data["path"] = data["path_raw"].replace("/blob/", "")
+            data["path"] = data["path_raw"][len("/blob/") :]
         if data["path_raw"].startswith("/tree/"):
-            data["branch"] = data["path_raw"].replace("/tree/", "")
+            data["branch"] = data["path_raw"][len("/tree/") :]
         return data
