@@ -6,6 +6,15 @@ History
 
 .. towncrier release notes start
 
+0.15.0 (2026-06-16)
+===================
+
+Bugfixes
+--------
+
+- Fix ``path`` and ``branch`` extraction removing *every* ``/blob/`` and ``/tree/`` occurrence instead of only the leading marker, which corrupted file paths and branch names containing those segments. (#150)
+
+
 0.14.0 (2025-10-22)
 ===================
 
