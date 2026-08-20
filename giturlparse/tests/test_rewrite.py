@@ -61,6 +61,18 @@ REWRITE_URLS = (
         "ssh",
         "git@host.org:Org/Group/Repo.git/blob/master/file.py",
     ),
+    # GitHub HTTPS with port
+    ("https://github.com:8443/Org/Repo.git", "https", "https://github.com:8443/Org/Repo.git"),
+    ("https://github.com:8443/Org/Repo.git", "ssh", "git@github.com:8443/Org/Repo.git"),
+    ("https://github.com:8443/Org/Repo.git", "git", "git://github.com:8443/Org/Repo.git"),
+    # GitHub GIT with port
+    ("git://github.com:9418/Org/Repo.git", "git", "git://github.com:9418/Org/Repo.git"),
+    ("git://github.com:9418/Org/Repo.git", "https", "https://github.com:9418/Org/Repo.git"),
+    ("git://github.com:9418/Org/Repo.git", "ssh", "git@github.com:9418/Org/Repo.git"),
+    # GitHub SSH with port
+    ("ssh://git@github.com:2222/Org/Repo.git", "ssh", "git@github.com:2222/Org/Repo.git"),
+    ("ssh://git@github.com:2222/Org/Repo.git", "https", "https://github.com:2222/Org/Repo.git"),
+    ("ssh://git@github.com:2222/Org/Repo.git", "git", "git://github.com:2222/Org/Repo.git"),
 )
 
 INVALID_PARSE_URLS = (
@@ -84,6 +96,19 @@ REWRITE_COMPONENTS = {
     },
 }
 
+REWRITE_COMPONENTS_WITH_PORT = {
+    "name": {
+        "source": "ssh://git@github.com:2222/Org/Repo.git",
+        "value": "NewRepo",
+        "expected": "git@github.com:2222/Org/NewRepo.git",
+    },
+    "owner": {
+        "source": "ssh://git@github.com:2222/Org/Repo.git",
+        "value": "NewOrg",
+        "expected": "git@github.com:2222/NewOrg/Repo.git",
+    },
+}
+
 
 class UrlRewriteTestCase(unittest.TestCase):
     def _test_rewrite(self, source, protocol, expected):
@@ -103,6 +128,10 @@ class UrlRewriteTestCase(unittest.TestCase):
 
     def test_rewrite_components(self):
         for field, data in REWRITE_COMPONENTS.items():
+            self._test_rewrite_components(field, data)
+
+    def test_rewrite_components_with_port(self):
+        for field, data in REWRITE_COMPONENTS_WITH_PORT.items():
             self._test_rewrite_components(field, data)
 
 

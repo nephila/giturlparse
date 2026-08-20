@@ -5,30 +5,30 @@ class GitHubPlatform(BasePlatform):
     PATTERNS = {
         "https": (
             r"(?P<protocols>(git\+)?(?P<protocol>https))://"
-            r"((?P<username>[^/]+?):(?P<access_token>[^/]+?)@)?(?P<domain>[^/]+?)"
+            r"((?P<username>[^/]+?):(?P<access_token>[^/]+?)@)?(?P<domain>[^:/]+)(?::(?P<port>[0-9]+))?"
             r"(?P<pathname>/(?P<owner>[^/]+?)/(?P<repo>[^/]+?)(?:(\.git)?(/)?)(?P<path_raw>(/blob/|/tree/).+)?)$"
         ),
         "ssh": (
-            r"(?P<protocols>(git\+)?(?P<protocol>ssh))?(://)?git@(?P<domain>.+?)(?P<pathname>(:|/)"
-            r"(?P<owner>[^/]+)/(?P<repo>[^/]+?)(?:(\.git)?(/)?)"
+            r"(?P<protocols>(git\+)?(?P<protocol>ssh))?(://)?git@(?P<domain>[^:/]+)(:)?(?P<port>[0-9]+)?(?(port))?"
+            r"(?P<pathname>/?(?P<owner>[^/]+)/(?P<repo>[^/]+?)(?:(\.git)?(/)?)"
             r"(?P<path_raw>(/blob/|/tree/).+)?)$"
         ),
         "git": (
-            r"(?P<protocols>(?P<protocol>git))://(?P<domain>.+?)"
+            r"(?P<protocols>(?P<protocol>git))://(?P<domain>[^:/]+)(?::(?P<port>[0-9]+))?"
             r"(?P<pathname>/(?P<owner>[^/]+)/(?P<repo>[^/]+?)(?:(\.git)?(/)?)"
             r"(?P<path_raw>(/blob/|/tree/).+)?)$"
         ),
     }
     FORMATS = {
-        "https": r"https://%(domain)s/%(owner)s/%(repo)s%(dot_git)s%(path_raw)s",
-        "ssh": r"git@%(domain)s:%(owner)s/%(repo)s%(dot_git)s%(path_raw)s",
-        "git": r"git://%(domain)s/%(owner)s/%(repo)s%(dot_git)s%(path_raw)s",
+        "https": r"https://%(domain)s%(port_colon)s/%(owner)s/%(repo)s%(dot_git)s%(path_raw)s",
+        "ssh": r"git@%(domain)s:%(port_slash)s%(owner)s/%(repo)s%(dot_git)s%(path_raw)s",
+        "git": r"git://%(domain)s%(port_colon)s/%(owner)s/%(repo)s%(dot_git)s%(path_raw)s",
     }
     DOMAINS = (
         "github.com",
         "gist.github.com",
     )
-    DEFAULTS = {"_user": "git"}
+    DEFAULTS = {"_user": "git", "port": ""}
 
     @staticmethod
     def clean_data(data):
