@@ -89,6 +89,7 @@ class GitUrlParsed:
         """Reformat URL to protocol."""
         items = copy(self._parsed)
         items["port_slash"] = "%s/" % self.port if self.port else ""
+        items["port_colon"] = ":%s" % self.port if self.port else ""
         items["groups_slash"] = "%s/" % self.groups_path if self.groups_path else ""
         items["dot_git"] = "" if items["repo"].endswith(".git") else ".git"
         return self._platform_obj.FORMATS[protocol] % items

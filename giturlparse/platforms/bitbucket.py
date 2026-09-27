@@ -8,7 +8,7 @@ class BitbucketPlatform(BasePlatform):
             r"(?P<pathname>/(?P<owner>.+)/(?P<repo>.+?)(?:\.git)?)$"
         ),
         "ssh": (
-            r"(?P<protocols>(git\+)?(?P<protocol>ssh))?(://)?git@(?P<domain>.+?):"
+            r"(?:(?P<protocols>(git\+)?(?P<protocol>ssh))://|(?!.*://))(?:(?P<_user>[^@]+)@)?(?P<domain>[^/:@]+):"
             r"(?P<pathname>(?P<owner>.+)/(?P<repo>.+?)(?:\.git)?)$"
         ),
     }
