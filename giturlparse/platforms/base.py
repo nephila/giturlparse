@@ -1,15 +1,17 @@
 import itertools
 import re
+from typing import ClassVar
 
 
 class BasePlatform:
-    FORMATS = {
+    FORMATS: ClassVar[dict] = {
+        "http": r"http://%(domain)s/%(repo)s%(dot_git)s",
         "https": r"https://%(domain)s/%(repo)s%(dot_git)s",
         "ssh": r"git@%(domain)s:%(repo)s%(dot_git)s%(path_raw)s",
         "git": r"git://%(domain)s/%(repo)s%(dot_git)s%(path_raw)s",
     }
 
-    PATTERNS = {
+    PATTERNS: ClassVar[dict] = {
         "ssh": r"(?P<_user>.+)@(?P<domain>[^/]+?):(?P<repo>.+)(?:(\.git)?(/)?)",
         "http": r"(?P<protocols>(?P<protocol>http))://(?P<domain>[^/]+?)/(?P<repo>.+)(?:(\.git)?(/)?)",
         "https": r"(?P<protocols>(?P<protocol>https))://(?P<domain>[^/]+?)/(?P<repo>.+)(?:(\.git)?(/)?)",
@@ -19,7 +21,7 @@ class BasePlatform:
     # None means it matches all domains
     DOMAINS = None
     SKIP_DOMAINS = None
-    DEFAULTS = {}
+    DEFAULTS: ClassVar[dict] = {}
 
     def __init__(self):
         # Precompile PATTERNS
