@@ -88,7 +88,7 @@ REWRITE_COMPONENTS = {
 class UrlRewriteTestCase(unittest.TestCase):
     def _test_rewrite(self, source, protocol, expected):
         parsed = parse(source)
-        self.assertTrue(parsed.valid, "Invalid Url: %s" % source)
+        self.assertTrue(parsed.valid, f"Invalid Url: {source}")
         return self.assertEqual(parse(source).format(protocol), expected)
 
     def test_rewrites(self):
@@ -98,12 +98,50 @@ class UrlRewriteTestCase(unittest.TestCase):
     def _test_rewrite_components(self, field, data):
         parsed = parse(data["source"])
         setattr(parsed, field, data["value"])
-        self.assertTrue(parsed.valid, "Invalid Url: %s" % data["source"])
+        self.assertTrue(parsed.valid, f"Invalid Url: {data['source']}")
         return self.assertEqual(parsed.url, data["expected"])
 
     def test_rewrite_components(self):
         for field, data in REWRITE_COMPONENTS.items():
             self._test_rewrite_components(field, data)
+
+    def test_generic_http_normalized(self):
+        for domain in ("git.example.org", "git.example.org:8080"):
+            for repo in ("project", "project.git", "Org/project.git"):
+                source = f"http://{domain}/{repo}"
+                expected = source if repo.endswith(".git") else source + ".git"
+                with self.subTest(source=source):
+                    parsed = parse(source)
+                    self.assertTrue(parsed.valid)
+                    self.assertEqual(parsed.platform, "base")
+                    self.assertEqual(parsed.normalized, expected)
+
+    def test_generic_http_rewrites(self):
+        expected = {
+            "ssh": "git@git.example.org:project.git",
+            "http": "http://git.example.org/project.git",
+            "https": "https://git.example.org/project.git",
+            "git": "git://git.example.org/project.git",
+        }
+        for url in expected.values():
+            for suffix in ("", ".git"):
+                source = url[:-4] + suffix
+                parsed = parse(source)
+                with self.subTest(source=source, operation="urls"):
+                    self.assertTrue(parsed.valid)
+                    self.assertEqual(parsed.platform, "base")
+                    self.assertEqual(parsed.urls, expected)
+                with self.subTest(source=source, operation="url2http"):
+                    self.assertEqual(parsed.url2http, expected["http"])
+                    self.assertEqual(parsed.format("http"), expected["http"])
+
+    def test_generic_http_name_update(self):
+        for source in ("http://git.example.org/project", "http://git.example.org/project.git"):
+            with self.subTest(source=source):
+                parsed = parse(source)
+                parsed.name = "new-project"
+                self.assertEqual(parsed.url, "http://git.example.org/new-project.git")
+                self.assertEqual(parsed.normalized, parsed.url)
 
 
 # Test Suite
