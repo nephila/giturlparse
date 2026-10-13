@@ -6,6 +6,16 @@ History
 
 .. towncrier release notes start
 
+0.16.0 (2026-10-13)
+===================
+
+Bugfixes
+--------
+
+- Fix HTTP normalization and protocol rewrites for generic Git hosts. (#97)
+- Pin ruff version to 0.15.22 (#156)
+
+
 0.15.0 (2026-06-16)
 ===================
 
