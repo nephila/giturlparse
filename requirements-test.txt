@@ -1,5 +1,5 @@
 -r requirements.txt
 coverage
 coveralls
-mock>=1.0.1
+mock>=5.2.0
 tox
